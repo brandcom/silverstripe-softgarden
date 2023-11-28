@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
+
+echo "Running PHPStan"
+./vendor/bin/phpstan analyse app
+
+echo "Running PHP CodeSniffer"
+./vendor/bin/phpcbf
+./vendor/bin/phpcs
