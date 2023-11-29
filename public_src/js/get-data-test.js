@@ -15,19 +15,19 @@ fetch(`${base_url}/${get_jobs}`, {
     .then((response) => response.json())
     .then((data) => {
         console.log(data.results);
-        const data_array = data.results;
+        //const data_array = data.results;
 
-        for (let i = 0; i < data_array.length; i++) {
-            let div = document.createElement("div");
-            let jobTitle = document.createElement("h2");
-            jobTitle.innerHTML = data_array[i].externalPostingName;
-            jobTitle.classList.add("text-3xl");
-            jobTitle.classList.add("font-bold");
-            jobTitle.classList.add("underline");
-            let jobDescr = document.createElement("div");
-            jobDescr.innerHTML = data_array[i].jobAdText;
-            div.appendChild(jobTitle);
-            div.appendChild(jobDescr);
-            document.getElementById("holder").appendChild(div);
-        }
+        // for (let i = 0; i < data_array.length; i++) {
+        //     let div = document.createElement("div");
+        //     let jobTitle = document.createElement("h2");
+        //     jobTitle.innerHTML = data_array[i].externalPostingName;
+        //     jobTitle.classList.add("text-3xl");
+        //     jobTitle.classList.add("font-bold");
+        //     jobTitle.classList.add("underline");
+        //     let jobDescr = document.createElement("div");
+        //     jobDescr.innerHTML = data_array[i].jobAdText;
+        //     div.appendChild(jobTitle);
+        //     div.appendChild(jobDescr);
+        //     document.getElementById("holder").appendChild(div);
+        // }
     });
