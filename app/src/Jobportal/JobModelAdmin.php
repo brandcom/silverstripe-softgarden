@@ -10,4 +10,9 @@ use SilverStripe\Admin\ModelAdmin;
  */
 class JobModelAdmin extends ModelAdmin
 {
+    private static string $menu_title = "Job-Section";
+
+    private static string $url_segment = "jobs";
+
+    private static array $managed_models = [JobDataObject::class];
 }
