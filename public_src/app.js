@@ -1,8 +1,6 @@
 import "./style.scss";
 import { TextBaseElement } from "./BaseElements/TextBaseElement";
 
-TextBaseElement();
+import "./js/get-data-test.js";
 
-const el = document.createElement("div");
-el.innerHTML = "JavaScript is working.";
-document.body.appendChild(el);
+TextBaseElement();

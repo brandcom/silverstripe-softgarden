@@ -23,7 +23,7 @@ let config = {
                     "css-loader",
                     {
                         loader: "postcss-loader",
-                        options: { postcssOptions: { plugins: ["autoprefixer"] } },
+                        options: { postcssOptions: { plugins: ["tailwindcss", "autoprefixer"] } },
                     },
                     "sass-loader",
                 ],
@@ -51,7 +51,7 @@ let config = {
         watchFiles: ["./app/templates/**/*.ss"],
         proxy: {
             context: () => true,
-            target: "https://silverstripe-starter.local", // enter your local dev url here
+            target: "https://vaventus-softgarden.local", // enter your local dev url here
             secure: false,
             changeOrigin: true,
             onError(err) {
