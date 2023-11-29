@@ -6,7 +6,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
 
 /**
- * Ist dafür zuständig die Stellenanzeigen aus der API zu siehen und in der
+ * Ist dafür zuständig die Stellenanzeigen aus der API zu ziehen und in der
  * Silverstripe-DB abzuspeichern.
  */
 class JobImportBuildTask extends BuildTask
