@@ -41,4 +41,11 @@ class JobDataObject extends DataObject
         "remote_status" => "Varchar",
         "keywords" => "Varchar",
     ];
+
+    private static array $summary_fields = [
+        "jobDbId" => "Job ID",
+        "externalPostingName" => "Job Titel",
+        "geo_name" => "Ort",
+        "geo_state" => "Bundesland",
+    ];
 }
