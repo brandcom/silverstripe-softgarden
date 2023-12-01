@@ -14,8 +14,9 @@ fetch(`${base_url}/${get_jobs}`, {
 })
     .then((response) => response.json())
     .then((data) => {
+        console.log(`${base_url}/${get_jobs}`);
         console.log(data.results);
-        //const data_array = data.results;
+        // const data_array = data.results;
 
         // for (let i = 0; i < data_array.length; i++) {
         //     let div = document.createElement("div");

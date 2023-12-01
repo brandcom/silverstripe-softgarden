@@ -9,6 +9,7 @@ use SilverStripe\Dev\BuildTask;
  * Ist dafür zuständig die Stellenanzeigen aus der API zu ziehen und in der
  * Silverstripe-DB abzuspeichern.
  */
+
 class JobImportBuildTask extends BuildTask
 {
     /**
@@ -19,8 +20,12 @@ class JobImportBuildTask extends BuildTask
      */
     public function run($request)
     {
-        // beispiel
-        // $client = new SoftgardenClient();
-        // $jobs = $client->getAllJobs();
+        $client = new SoftgardenClient();
+        $jobs = $client->getAllJobs();
+        $newJobDataObject = new JobDataObject();
+        $newJobDataObject->saveJobs($jobs);
+
+        //TODO DB löschen und neu importieren
+        // Run: https://localhost:3000/dev/tasks/JobImportBuildTask
     }
 }
