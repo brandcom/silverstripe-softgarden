@@ -75,6 +75,12 @@ class JobDataObject extends DataObject
 
     public function saveJobs(array $jobs): void
     {
+        // Lösche die gespeicherten Jobs zuerst
+        $joblist = JobDataObject::get();
+        foreach ($joblist as $item) {
+            $item->delete();
+        }
+
         //Die Ergebnisse durchlaufen und JobDataObjects erstellen
         foreach ($jobs["results"] as $job) {
             $jobDataObject = new JobDataObject();
