@@ -2,22 +2,23 @@
 
 declare(strict_types=1);
 
+use SilverStripe\Core\Environment;
+
 /**
  * Unsere Brücke zu den Stellenanzeigen.
  */
 class SoftgardenClient
 {
-    // Todo Passw und Username in .env
     // TODO Pagination bei Softgarden
 
     private string $apiUrl = "https://api.softgarden.io/api/rest/v3/frontend/jobslist/125411_extern";
-    private string $username = "API_KEY";
-    private string $password = "";
+    private string $username;
+    private string $password;
 
-    // TODO Remove
-    public function getAllJobsByStandort(string $standort): array
+    public function __construct()
     {
-        return [];
+        $this->username = Environment::getEnv("SOFTGARDEN_API_KEY");
+        $this->password = Environment::getEnv("SOFTGARDEN_API_Password");
     }
 
     public function getAllJobs(): array
