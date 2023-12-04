@@ -25,8 +25,6 @@
     --%>
     <meta property="og:image" content="">
 
-    <div id="holder"></div>
-
     <% require themedCSS("build/app.min") %>
     <% include Tracking %>
 </head>
