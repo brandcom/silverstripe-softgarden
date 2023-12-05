@@ -27,7 +27,7 @@ use SilverStripe\ORM\DataObject;
  * @property string $job_owner_email
  * @property string $job_owner_firstname
  * @property string $job_owner_lastname
- * @property string $job_owner_salutation
+ * @property string|null $job_owner_salutation
  * @property string $job_owner_avatarurl
  * @property string|null $postingLastUpdatedDate
  * @property string $project_number
@@ -82,7 +82,6 @@ class JobDataObject extends DataObject
         }
 
         //Die Ergebnisse durchlaufen und JobDataObjects erstellen
-        //TODO -  Datumswerte konvertieren
         //TODO - Anrede
 
         foreach ($jobs["results"] as $job) {
@@ -119,9 +118,19 @@ class JobDataObject extends DataObject
                 ? $job["job_owner_firstname"]
                 : null;
             $jobDataObject->job_owner_lastname = isset($job["job_owner_lastname"]) ? $job["job_owner_lastname"] : null;
-            $jobDataObject->job_owner_salutation = isset($job["job_owner_salutation"])
-                ? $job["job_owner_salutation"]
-                : null;
+            if (isset($job["job_owner_salutation"])) {
+                $salution = $job["job_owner_salutation"];
+                if ($salution == "0") {
+                    $salution = "";
+                } elseif ($salution == "1") {
+                    $salution = "Herr";
+                } elseif ($salution == "2") {
+                    $salution = "Frau";
+                }
+                $jobDataObject->job_owner_salutation = $salution;
+            } else {
+                $jobDataObject->job_owner_salutation = null;
+            }
             $jobDataObject->job_owner_avatarurl = isset($job["job_owner_avatarurl"])
                 ? $job["job_owner_avatarurl"]
                 : null;
