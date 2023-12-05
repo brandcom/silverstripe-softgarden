@@ -1,11 +1,3 @@
-/.env
-/auth.json
-/.graphql-generated/
-/_resources/
-/app/_config/env.yml
-/logs/
-/node_modules/
-/public/_graphql/
-/public/_resources/
-/silverstripe-cache/
 /vendor/
+/composer.lock
+/composer.phar

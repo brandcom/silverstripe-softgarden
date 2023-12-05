@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace brandcom\Softgarden;
+
 use SilverStripe\ORM\DataObject;
 
 /**
@@ -202,7 +204,7 @@ class JobDataObject extends DataObject
     {
         $lastUpdatedDateMilliseconds = $tmestmp;
         $seconds = $lastUpdatedDateMilliseconds / 1000;
-        $date = new DateTime("@$seconds");
+        $date = new \DateTime("@$seconds");
         $formattedDte = $date->format("d.m.Y-H:i");
         return $formattedDte;
     }

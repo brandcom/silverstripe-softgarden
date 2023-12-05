@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace brandcom\Softgarden;
+
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
 
