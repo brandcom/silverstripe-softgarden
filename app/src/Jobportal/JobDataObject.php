@@ -29,7 +29,7 @@ use SilverStripe\ORM\DataObject;
  * @property string $job_owner_lastname
  * @property string $job_owner_salutation
  * @property string $job_owner_avatarurl
- * @property int $postingLastUpdatedDate
+ * @property string|null $postingLastUpdatedDate
  * @property string $project_number
  * @property string $employmentTypes
  * @property string $industries
@@ -62,7 +62,7 @@ class JobDataObject extends DataObject
         "job_owner_lastname" => "Varchar",
         "job_owner_salutation" => "Varchar",
         "job_owner_avatarurl" => "Varchar",
-        "postingLastUpdatedDate" => "Int",
+        "postingLastUpdatedDate" => "Varchar",
         "project_number" => "Varchar",
         "employmentTypes" => "Varchar",
         "industries" => "Varchar",
@@ -82,9 +82,12 @@ class JobDataObject extends DataObject
         }
 
         //Die Ergebnisse durchlaufen und JobDataObjects erstellen
+        //TODO -  Datumswerte konvertieren
+        //TODO - Anrede
+
         foreach ($jobs["results"] as $job) {
             $jobDataObject = new JobDataObject();
-
+            var_dump($job);
             $companyName = $job["company_name"];
 
             $jobDataObject->jobDbId = isset($job["jobDbId"]) ? $job["jobDbId"] : null;
@@ -117,9 +120,15 @@ class JobDataObject extends DataObject
             $jobDataObject->job_owner_avatarurl = isset($job["job_owner_avatarurl"])
                 ? $job["job_owner_avatarurl"]
                 : null;
-            $jobDataObject->postingLastUpdatedDate = isset($job["postingLastUpdatedDate"])
-                ? $job["postingLastUpdatedDate"]
-                : null;
+            // $jobDataObject->postingLastUpdatedDate = isset($job["postingLastUpdatedDate"])
+            //     ? date('d.m.Y-H:i', $job["postingLastUpdatedDate"])
+            //     : null;
+            if (isset($job["postingLastUpdatedDate"])) {
+                $formattedDate = self::convertToDate($job["postingLastUpdatedDate"]);
+                $jobDataObject->postingLastUpdatedDate = $formattedDate;
+            } else {
+                $jobDataObject->postingLastUpdatedDate = null;
+            }
             $jobDataObject->project_number = isset($job["project_number"]) ? $job["project_number"] : null;
             $jobDataObject->employmentTypes = isset($job["employmentTypes"])
                 ? implode(",", $job["employmentTypes"])
@@ -131,6 +140,15 @@ class JobDataObject extends DataObject
 
             $jobDataObject->write();
         }
+    }
+
+    private function convertToDate(int $tmestmp): string
+    {
+        $lastUpdatedDateMilliseconds = $tmestmp;
+        $seconds = $lastUpdatedDateMilliseconds / 1000;
+        $date = new DateTime("@$seconds");
+        $formattedDte = $date->format("d.m.Y-H:i");
+        return $formattedDte;
     }
 
     private static array $summary_fields = [
