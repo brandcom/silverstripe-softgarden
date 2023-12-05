@@ -1,5 +1,11 @@
 # Silverstripe Softgarden
 
+## Install
+
+```
+composer require brandcom/silverstripe-softgarden:dev-ss4
+```
+
 ## Implementierung der API
 
 Im Backend von Softgarden kann man für jedes Unternehmen einen API Key generieren.
