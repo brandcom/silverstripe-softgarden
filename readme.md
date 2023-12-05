@@ -149,3 +149,17 @@ Oder deinen SCSS-Components
     @apply text-3xl font-bold underline;
 }
 ```
+
+## Implementierung der API
+
+Im Backend von Softgarden kann man für jedes Unternehmen einen API Key generieren.
+Schritt 1: Channel ID ermitteln
+Schritt 2: folgende Variablen in der .env eintragen:
+
+#Softgarden Api
+
+SOFTGARDEN_API_KEY='Key'
+
+SOFTGARDEN_API_Password='' # Kann leer bleiben
+
+SOFTGARDEN_API_CHANNEL_ID='id'
