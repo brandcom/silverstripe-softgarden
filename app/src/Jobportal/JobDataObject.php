@@ -22,7 +22,7 @@ use SilverStripe\ORM\DataObject;
  * @property string $geo_zip
  * @property string $locale
  * @property string $jobAdText
- * @property int $jobStartDate
+ * @property string|null $jobStartDate
  * @property string $job_ad_url
  * @property string $job_owner_email
  * @property string $job_owner_firstname
@@ -55,7 +55,7 @@ class JobDataObject extends DataObject
         "geo_zip" => "Varchar",
         "locale" => "Varchar",
         "jobAdText" => "Text",
-        "jobStartDate" => "Int",
+        "jobStartDate" => "Varchar",
         "job_ad_url" => "Varchar",
         "job_owner_email" => "Varchar",
         "job_owner_firstname" => "Varchar",
@@ -107,7 +107,12 @@ class JobDataObject extends DataObject
             $jobDataObject->geo_zip = isset($job["geo_zip"]) ? $job["geo_zip"] : null;
             $jobDataObject->locale = isset($job["locale"]) ? $job["locale"] : null;
             $jobDataObject->jobAdText = isset($job["jobAdText"]) ? $job["jobAdText"] : null;
-            $jobDataObject->jobStartDate = isset($job["jobStartDate"]) ? $job["jobStartDate"] : null;
+            if (isset($job["jobStartDate"])) {
+                $formattedStartDate = self::convertToDate($job["jobStartDate"]);
+                $jobDataObject->jobStartDate = $formattedStartDate;
+            } else {
+                $jobDataObject->jobStartDate = null;
+            }
             $jobDataObject->job_ad_url = isset($job["job_ad_url"]) ? $job["job_ad_url"] : null;
             $jobDataObject->job_owner_email = isset($job["job_owner_email"]) ? $job["job_owner_email"] : null;
             $jobDataObject->job_owner_firstname = isset($job["job_owner_firstname"])
@@ -120,9 +125,6 @@ class JobDataObject extends DataObject
             $jobDataObject->job_owner_avatarurl = isset($job["job_owner_avatarurl"])
                 ? $job["job_owner_avatarurl"]
                 : null;
-            // $jobDataObject->postingLastUpdatedDate = isset($job["postingLastUpdatedDate"])
-            //     ? date('d.m.Y-H:i', $job["postingLastUpdatedDate"])
-            //     : null;
             if (isset($job["postingLastUpdatedDate"])) {
                 $formattedDate = self::convertToDate($job["postingLastUpdatedDate"]);
                 $jobDataObject->postingLastUpdatedDate = $formattedDate;
