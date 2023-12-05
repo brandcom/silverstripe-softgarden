@@ -82,8 +82,6 @@ class JobDataObject extends DataObject
         }
 
         //Die Ergebnisse durchlaufen und JobDataObjects erstellen
-        //TODO - Anrede
-
         foreach ($jobs["results"] as $job) {
             $jobDataObject = new JobDataObject();
             var_dump($job);
