@@ -31,7 +31,7 @@ use SilverStripe\ORM\DataObject;
  * @property string $job_owner_avatarurl
  * @property string|null $postingLastUpdatedDate
  * @property string $project_number
- * @property string $employmentTypes
+ * @property string|null $employmentTypes
  * @property string $industries
  * @property string $internalJobAdText
  * @property string $remote_status
@@ -139,9 +139,56 @@ class JobDataObject extends DataObject
                 $jobDataObject->postingLastUpdatedDate = null;
             }
             $jobDataObject->project_number = isset($job["project_number"]) ? $job["project_number"] : null;
-            $jobDataObject->employmentTypes = isset($job["employmentTypes"])
-                ? implode(",", $job["employmentTypes"])
-                : null;
+            if (isset($job["employmentTypes"])) {
+                $empType = implode(",", $job["employmentTypes"]);
+                switch ($empType) {
+                    case "1":
+                        $empType = "Arbeitnehmerüberlassung";
+                        break;
+                    case "2":
+                        $empType = "Ausbildung, Studium";
+                        break;
+                    case "3":
+                        $empType = "Bachelor-/Master-/Diplom-Arbeiten";
+                        break;
+                    case "4":
+                        $empType = "Befristeter Vertrag";
+                        break;
+                    case "5":
+                        $empType = "Berufseinstieg/Trainee";
+                        break;
+                    case "6":
+                        $empType = "Feste Anstellung";
+                        break;
+                    case "7":
+                        $empType = "Franchise";
+                        break;
+                    case "8":
+                        $empType = "Freie Mitarbeit/Projektmitarbeit";
+                        break;
+                    case "9":
+                        $empType = "Handelsvertreter";
+                        break;
+                    case "10":
+                        $empType = "Praktikum";
+                        break;
+                    case "11":
+                        $empType = "Promotion/Habilitation";
+                        break;
+                    case "12":
+                        $empType = "Referendariat";
+                        break;
+                    case "13":
+                        $empType = "Studentenjobs, Werkstudent";
+                        break;
+                    default:
+                        $empType = "-";
+                        break;
+                }
+                $jobDataObject->employmentTypes = $empType;
+            } else {
+                $jobDataObject->employmentTypes = null;
+            }
             $jobDataObject->industries = isset($job["industries"]) ? implode(",", $job["industries"]) : null;
             $jobDataObject->internalJobAdText = isset($job["internalJobAdText"]) ? $job["internalJobAdText"] : null;
             $jobDataObject->remote_status = isset($job["remote_status"]) ? $job["remote_status"] : null;
