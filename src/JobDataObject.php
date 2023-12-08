@@ -41,6 +41,8 @@ use SilverStripe\ORM\DataObject;
  */
 class JobDataObject extends DataObject
 {
+    private static $table_name = 'BrandcomSoftgardenJobDataObject';
+    
     private static array $db = [
         "jobDbId" => "Int",
         "externalPostingName" => "Varchar",
