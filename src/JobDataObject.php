@@ -37,6 +37,8 @@ use SilverStripe\ORM\DataObject;
  * @property string $internalJobAdText
  * @property string $remote_status
  * @property string $keywords
+ * @property string|null $workTimes
+ * @property string|null $workExperiences
  */
 class JobDataObject extends DataObject
 {
@@ -71,6 +73,8 @@ class JobDataObject extends DataObject
         "internalJobAdText" => "Varchar",
         "remote_status" => "Varchar",
         "keywords" => "Varchar",
+        "workTimes" => "Varchar",
+        "workExperiences" => "Varchar",
     ];
 
     private string $companyName;
@@ -194,6 +198,53 @@ class JobDataObject extends DataObject
             $jobDataObject->internalJobAdText = isset($job["internalJobAdText"]) ? $job["internalJobAdText"] : null;
             $jobDataObject->remote_status = isset($job["remote_status"]) ? $job["remote_status"] : null;
             $jobDataObject->keywords = isset($job["keywords"]) ? $job["keywords"] : null;
+            // Arbeitszeit
+            if (isset($job["workTimes"])) {
+                $workTimeType = implode(",", $job["workTimes"]);
+                switch ($workTimeType) {
+                    case "799eb9d2c0bc4e7490fde05f847b331a":
+                        $workTimeType = "Teilzeit";
+                        break;
+                    case "137caf67764c4b63b0272895af1704b0":
+                        $workTimeType = "Vollzeit";
+                        break;
+                    case "87af1987840d4442b87f2e0ee3344a1f":
+                        $workTimeType = "Voll- oder Teilzeit";
+                        break;
+                    case "ebc0523b259945e3b633d88428a3ce7a":
+                        $workTimeType = "Freie Mitarbeit/Projektmitarbeit";
+                        break;                    
+                    default:
+                        $workTimeType = "-";
+                        break;
+                }
+                $jobDataObject->workTimes = $workTimeType;
+            } else {
+                $jobDataObject->workTimes = null;
+            }
+
+            //Berufserfahrung
+            if (isset($job["workExperiences"])) {
+                $workExperType = implode(",", $job["workExperiences"]);
+                switch ($workExperType) {
+                    case "1b4f51fe628c4119a2d7a581557d0944":
+                        $workExperType = "Mit Berufserfahrung";
+                        break;
+                    case "12df74fc98fc48aba84b99927db3d82d":
+                        $workExperType = "Mit Leitungsfunktion";
+                        break;
+                    case "0a01c25fd9e34663bf4464094e648090":
+                        $workExperType = "Ohne Berufserfahrung";
+                        break;                  
+                    default:
+                        $workExperType = "-";
+                        break;
+                }
+                $jobDataObject->workExperiences = $workExperType;
+            } else {
+                $jobDataObject->workExperiences = null;
+            }
+
 
             $jobDataObject->write();
         }
