@@ -11,7 +11,6 @@ use SilverStripe\Core\Environment;
  */
 class SoftgardenClient
 {
-    // TODO Pagination bei Softgarden
 
     private string $apiUrl = "https://api.softgarden.io/api/rest/v3/frontend/jobslist";
     private string $username;

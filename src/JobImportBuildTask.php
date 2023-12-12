@@ -26,8 +26,5 @@ class JobImportBuildTask extends BuildTask
         $jobs = $client->getAllJobs();
         $newJobDataObject = new JobDataObject();
         $newJobDataObject->saveJobs($jobs);
-
-        //TODO DB löschen und neu importieren
-        // Run: https://localhost:3000/dev/tasks/JobImportBuildTask
     }
 }
