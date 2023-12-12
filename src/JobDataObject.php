@@ -26,7 +26,6 @@ use SilverStripe\ORM\DataObject;
  * @property string $jobAdText
  * @property string|null $jobStartDate
  * @property string $job_ad_url
- * @property string $job_owner_email
  * @property string $job_owner_firstname
  * @property string $job_owner_lastname
  * @property string|null $job_owner_salutation
@@ -42,7 +41,7 @@ use SilverStripe\ORM\DataObject;
 class JobDataObject extends DataObject
 {
     private static $table_name = 'BrandcomSoftgardenJobDataObject';
-    
+
     private static array $db = [
         "jobDbId" => "Int",
         "externalPostingName" => "Varchar",
@@ -61,7 +60,6 @@ class JobDataObject extends DataObject
         "jobAdText" => "Text",
         "jobStartDate" => "Varchar",
         "job_ad_url" => "Varchar",
-        "job_owner_email" => "Varchar",
         "job_owner_firstname" => "Varchar",
         "job_owner_lastname" => "Varchar",
         "job_owner_salutation" => "Varchar",
@@ -115,7 +113,6 @@ class JobDataObject extends DataObject
                 $jobDataObject->jobStartDate = null;
             }
             $jobDataObject->job_ad_url = isset($job["job_ad_url"]) ? $job["job_ad_url"] : null;
-            $jobDataObject->job_owner_email = isset($job["job_owner_email"]) ? $job["job_owner_email"] : null;
             $jobDataObject->job_owner_firstname = isset($job["job_owner_firstname"])
                 ? $job["job_owner_firstname"]
                 : null;
@@ -219,4 +216,5 @@ class JobDataObject extends DataObject
         "geo_name" => "Ort",
         "geo_state" => "Bundesland",
     ];
+    
 }
