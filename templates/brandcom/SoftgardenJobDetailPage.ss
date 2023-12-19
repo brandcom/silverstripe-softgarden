@@ -1,16 +1,41 @@
 <% include HeaderImage %>
-    <section class="bc-softgarden__detailpage">
-        <% with $Jobdetail %>
-            <h2 >$externalPostingName</h2>
-            <p>Arbeitszeitmodell: $workTimes</p>
-            <p>Berufserfahrung: $workExperiences</p>
-            <p>Ab: $jobStartDate</p>
-            <p>Ort: $geo_name</p>
-            <div class="posting-wrapper">
+$ElementalArea
+<% with $Jobdetail %>    
+    <section class="softgarden-detailpage" data-worktime="$workTimes" data-workExperience="$workExperiences" data-worlPlace="$geo_city" data-workStartDate="$jobStartDate" id="jobinfos">
+            <h2 id="postingName" data-jobtitle="$externalPostingName" class="softgarden-detailpage__job-title"><span class="h4 primarycolor2">$externalPostingName</span></h2>
+            <div class="softgarden-detailpage__posting-wrapper">
                 $jobAdText.RAW
             </div>
-            <div class="apply-button-area">
-                <a href="$applyOnlineLink"> Jetzt bewerben </a>
+            <div class="softgarden-detailpage__apply-button-area">
+                <a href="$applyOnlineLink" class="softgarden-detailpage__apply-button"> Jetzt bewerben </a>
             </div>
-        <% end_with %>
     </section>
+<% end_with %>
+
+    <!-- <script type="application/ld+json">
+        {
+            "@context" : "https://schema.org/",
+            "@type" : "JobPosting",
+            "title" : "$Jobbezeichnung",
+            "description" : "$Description",
+            "datePosted" : "$Date",
+            "employmentType" : "$EmploymentType",
+            "hiringOrganization" : {
+                "@type" : "Organization",
+                "name" : "$SiteConfig.Company",
+                "sameAs" : "https://$SiteConfig.Website/",
+                "logo" : "https://$SiteConfig.Website/$SiteConfig.Logoheader.Link"
+            },
+            "jobLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "$SiteConfig.Strasse",
+                    "addressLocality": "$SiteConfig.Stadt",
+                    "addressRegion": "$SiteConfig.Bundesland",
+                    "postalCode": "$SiteConfig.PLZ",
+                    "addressCountry": "DE"
+                }
+            }
+        }
+    </script> -->
