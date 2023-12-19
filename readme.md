@@ -23,10 +23,24 @@ SOFTGARDEN_API_CHANNEL_ID='channelID'
 ## API Fetch auslösen -WIP
 Momentan unter der URL "BASEURL/dev/tasks/JobImportBuildTask"
 
-## Im Projekt
+# Im Projekt Backend
 
-Es muss eine Seite mit dem Namen "Jobdetails" vom Typ "Softgarden Job Detail Page" eingerichtet werden. In den Einstellungen den Haken bei Sichtbarkeit (Menü und Suche) entfernen.
 
 ## Jobs auf Seite anzeigen
 
-Um vorhandene Jobs anzuzeigen, setzt man an beliebiger Stelle das BaseElement "Softgarden Job Übersicht" aus. Hier kann noch eine Überschrift gepflegt werden.
+Um vorhandene Jobs anzuzeigen, setzt man an beliebiger Stelle das BaseElement "Softgarden Job Übersicht" ein. Hier kann noch eine Überschrift gepflegt werden.
+
+## Jobs auf Detailseite anzeigen
+
+Es muss eine Seite mit dem Namen "Jobdetails" vom Typ "Softgarden Job Detail Page" eingerichtet werden. In den Einstellungen den Haken bei Sichtbarkeit (Menü und Suche) entfernen.
+Auf der Jobdetails Seite unter dem Punkt Header ein geeignetes Bild wählen. Das Bild muss zu jedem Beruf passen, da hier kein individuelles Bild ausgespielt wird.
+
+Im Header-Image-Textfeld folgendes über den Tiny HTML Editor hinterlegen:
+
+```
+    <div class="KLASSE">
+        <h1><span id="softgarden__job_name_label" class="h1">Jobbezeichnung</span></h1>
+        <h2><span id="softgarden__job_infos_label" class="h4">Infos:</span></h2>
+    </div>
+    
+```
