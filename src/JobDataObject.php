@@ -26,10 +26,6 @@ use SilverStripe\ORM\DataObject;
  * @property string $jobAdText
  * @property string|null $jobStartDate
  * @property string $job_ad_url
- * @property string $job_owner_firstname
- * @property string $job_owner_lastname
- * @property string|null $job_owner_salutation
- * @property string $job_owner_avatarurl
  * @property string|null $postingLastUpdatedDate
  * @property string $project_number
  * @property string|null $employmentTypes
@@ -62,10 +58,6 @@ class JobDataObject extends DataObject
         "jobAdText" => "Text",
         "jobStartDate" => "Varchar",
         "job_ad_url" => "Varchar",
-        "job_owner_firstname" => "Varchar",
-        "job_owner_lastname" => "Varchar",
-        "job_owner_salutation" => "Varchar",
-        "job_owner_avatarurl" => "Varchar",
         "postingLastUpdatedDate" => "Varchar",
         "project_number" => "Varchar",
         "employmentTypes" => "Varchar",
@@ -117,26 +109,6 @@ class JobDataObject extends DataObject
                 $jobDataObject->jobStartDate = null;
             }
             $jobDataObject->job_ad_url = isset($job["job_ad_url"]) ? $job["job_ad_url"] : null;
-            $jobDataObject->job_owner_firstname = isset($job["job_owner_firstname"])
-                ? $job["job_owner_firstname"]
-                : null;
-            $jobDataObject->job_owner_lastname = isset($job["job_owner_lastname"]) ? $job["job_owner_lastname"] : null;
-            if (isset($job["job_owner_salutation"])) {
-                $salution = $job["job_owner_salutation"];
-                if ($salution == "0") {
-                    $salution = "";
-                } elseif ($salution == "1") {
-                    $salution = "Herr";
-                } elseif ($salution == "2") {
-                    $salution = "Frau";
-                }
-                $jobDataObject->job_owner_salutation = $salution;
-            } else {
-                $jobDataObject->job_owner_salutation = null;
-            }
-            $jobDataObject->job_owner_avatarurl = isset($job["job_owner_avatarurl"])
-                ? $job["job_owner_avatarurl"]
-                : null;
             if (isset($job["postingLastUpdatedDate"])) {
                 $formattedDate = self::convertToDate($job["postingLastUpdatedDate"]);
                 $jobDataObject->postingLastUpdatedDate = $formattedDate;
@@ -255,7 +227,7 @@ class JobDataObject extends DataObject
         $lastUpdatedDateMilliseconds = $tmestmp;
         $seconds = $lastUpdatedDateMilliseconds / 1000;
         $date = new \DateTime("@$seconds");
-        $formattedDte = $date->format("d.m.Y-H:i");
+        $formattedDte = $date->format("d.m.Y");
         return $formattedDte;
     }
 
