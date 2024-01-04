@@ -10,13 +10,13 @@
                 <div class="bc-softgarden__job-base-element-marker-title bc-softgarden__job-base-element-marker-title-last"><p></p></div>
             </div>
             <% loop $AllSoftgardenJobs %>
-                <a href="jobdetails/showjob/$ID" class="bc-softgarden__job-base-element-overlay-job">
+                <a href="jobdetails/showjob/$jobDbId" class="bc-softgarden__job-base-element-overlay-job">
                     <div class="bc-softgarden__job-base-element-third">
                         <p class="bc-softgarden__job-base-element-p">$externalPostingName</p>
                         <p class="bc-softgarden__job-base-element-p-worktime-mobile">$workTimes</p>
                     </div>
                     <div class="bc-softgarden__job-base-element-third bc-softgarden__worktime">
-                        <p class="bc-softgarden__job-base-element-p">$workTimes &shy; ab $jobStartDate</p>
+                        <p class="bc-softgarden__job-base-element-p">$workTimes &shy;- ab $jobStartDate</p>
                     </div>
                     <div class="bc-softgarden__job-base-element-third bc-softgarden__job-base-element-third-last">
                         <p class="bc-softgarden__job-base-element-p arrow">Mehr erfahren</p>
