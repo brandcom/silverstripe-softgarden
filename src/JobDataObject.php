@@ -101,7 +101,7 @@ class JobDataObject extends DataObject
             $jobDataObject->geo_street = isset($job["geo_street"]) ? $job["geo_street"] : null;
             $jobDataObject->geo_zip = isset($job["geo_zip"]) ? $job["geo_zip"] : null;
             $jobDataObject->locale = isset($job["locale"]) ? $job["locale"] : null;
-            $jobDataObject->jobAdText = isset($job["jobAdText"]) ? $job["jobAdText"] : null;
+            $jobDataObject->jobAdText = isset($job["jobAdText"]) ? strip_tags($job["jobAdText"], ['<ul>', '<li>', '<p>', '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>' ]) : null;
             if (isset($job["jobStartDate"])) {
                 $formattedStartDate = self::convertToDate($job["jobStartDate"]);
                 $jobDataObject->jobStartDate = $formattedStartDate;
