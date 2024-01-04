@@ -1,5 +1,17 @@
 <% include HeaderImage %>
 $ElementalArea
+<div class="softgarden-benefits__BE_textmodul softgarden-benefits__BackgroundLightgray">
+    <div class="softgarden-benefits__roundoverlay"></div>
+    <div class="softgarden-benefits__container">
+        <div class="Textmodul_holder" data-animate="" data-animation="slideInUp">
+            <div class="Text"> 
+                <h5><span class="h2 primarycolor2">Deine Benefits bei BBS Gebäudetechnik:</span></h5>
+            </div>
+        </div>
+        <div class="softgarden-benefits__BE_textmodul_flex flex flex-wrap" id="softgarden_benefit_wrapper"></div>
+    </div>
+</div>
+
 <% with $Jobdetail %>    
     <section class="softgarden-detailpage" data-worktime="$workTimes" data-workExperience="$workExperiences" data-worlPlace="$geo_city" data-workStartDate="$jobStartDate" id="jobinfos">
             <h2 id="postingName" data-jobtitle="$externalPostingName" class="softgarden-detailpage__job-title"><span class="h4 primarycolor2">$externalPostingName</span></h2>
@@ -10,19 +22,19 @@ $ElementalArea
                 <a href="$applyOnlineLink" class="softgarden-detailpage__apply-button"> Jetzt bewerben </a>
             </div>
     </section>
-<% end_with %>
 
-    <!-- <script type="application/ld+json">
+
+   <script type="application/ld+json">
         {
             "@context" : "https://schema.org/",
             "@type" : "JobPosting",
-            "title" : "$Jobbezeichnung",
+            "title" : "$externalPostingName",
             "description" : "$Description",
-            "datePosted" : "$Date",
-            "employmentType" : "$EmploymentType",
+            "datePosted" : "$postingLastUpdatedDate",
+            "employmentType" : "$employmentTypes",
             "hiringOrganization" : {
                 "@type" : "Organization",
-                "name" : "$SiteConfig.Company",
+                "name" : "$company_name",
                 "sameAs" : "https://$SiteConfig.Website/",
                 "logo" : "https://$SiteConfig.Website/$SiteConfig.Logoheader.Link"
             },
@@ -30,12 +42,13 @@ $ElementalArea
                 "@type": "Place",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "$SiteConfig.Strasse",
-                    "addressLocality": "$SiteConfig.Stadt",
-                    "addressRegion": "$SiteConfig.Bundesland",
+                    "streetAddress": "$geo_street",
+                    "addressLocality": "$Geo_name",
+                    "addressRegion": "$Geo_state",
                     "postalCode": "$SiteConfig.PLZ",
                     "addressCountry": "DE"
                 }
             }
         }
-    </script> -->
+    </script> 
+<% end_with %>
