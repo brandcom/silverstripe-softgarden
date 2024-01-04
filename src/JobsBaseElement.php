@@ -24,14 +24,14 @@ class JobsBaseElement extends \BaseElement
 
     public function getAllSoftgardenJobs(): DataList
     {
-        $todayDate = date('Y-m-d');
+        $heutigesDatum = date('Y-m-d');
         $jobs = JobDataObject::get();
 
         foreach ($jobs as $job) {
             $jobStartDate = $job->jobStartDate;
 
             // Überprüfe, ob das jobStartDate älter als das heutige Datum ist
-            if ($jobStartDate && strtotime($jobStartDate) < strtotime($todayDate)) {
+            if ($jobStartDate && strtotime($jobStartDate) < strtotime($heutigesDatum)) {
                 // Setze "sofort" als Wert für jobStartDate
                 $job->jobStartDate = 'sofort';
                 $job->write();
