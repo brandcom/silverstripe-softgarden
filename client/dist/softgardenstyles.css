@@ -1,0 +1,353 @@
+:root {
+    --softgarden-color: rgb(255, 21, 60);
+    --softgarden-color2: #23295b;
+  }
+
+.bc-softgarden__job-base-element {
+    margin: 50px auto;
+    .bc-softgarden__job-base-element-container {
+        max-width: 1400px;
+        padding: 0 50px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        .bc-softgarden__job-base-element-headline {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 2.625rem;
+            line-height: 1.2;
+        }
+
+        .bc-softgarden__job-base-element-jobwrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 30px;
+
+            .bc-softgarden__job-base-element-marker-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                position: relative;
+                padding: 20px 50px;
+                margin: 10px 0;
+                width: 100%;
+
+                .bc-softgarden__job-base-element-marker-title {
+                    width: 33.333%;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 1.5rem;
+                    line-height: 1.2;
+                    background: 0 0;
+                    border: 0 solid #000;
+                    text-align: left;
+                    padding: 0 40px 0 0;
+
+                    @media (max-width: 768px) {
+                        font-size: 1.2rem;
+                        width: 50%;
+
+                        &.bc-softgarden__job-base-element-marker-title-last {
+                            display: none;
+                        }
+                    }
+
+                    @media (max-width: 590px) {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .bc-softgarden__job-base-element-overlay-job {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                position: relative;
+                text-transform: uppercase;
+                padding: 20px 50px;
+                margin: 10px 0;
+                background-color: transparent;
+                color: var(--primary-color-2);
+                border-radius: 30px;
+                border: 1px solid var(--primary-color-2);
+                text-align: left;
+                font-weight: 700;
+
+                @media (max-width: 768px) {
+                    padding: 10px 20px;
+                }
+
+                &:hover {
+                    background-color: var(--softgarden-color2);
+                    color: white;
+                }
+
+                .bc-softgarden__job-base-element-third {
+                    width: 33.333%;
+                    @media (max-width: 768px) {
+                        width: 50%;
+                    }
+
+                    @media (max-width: 590px) {
+                        width: 100%;
+                    }
+                }
+
+                .bc-softgarden__job-base-element-p {
+                    padding: 0 40px 0 0;
+                    @media (max-width: 768px) {
+                        font-size: 0.75rem;
+                        padding-right: 0;
+                    }
+
+                    &.arrow {
+                        &::after {
+                            margin-left: 5px;
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            content: "";
+                            background-image: url(/img/pfeilrechts.png);
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+                            margin-bottom: -2px;
+                        }
+                    }
+                }
+
+                .bc-softgarden__job-base-element-p-worktime-mobile {
+                    display: none;
+
+                    @media (max-width: 590px) {
+                        display: block;
+                        font-size: 0.75rem;
+                    }
+                }
+
+                .bc-softgarden__job-base-element-third-last {
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bc-softgarden__worktime {
+    @media (max-width: 590px) {
+        display: none;
+    }
+}
+
+
+
+
+/* Detail Page Styles */
+
+.softgarden-detailpage {
+    margin: 50px auto;
+    padding: 0 70px;
+    width: 100%;
+
+    .softgarden-detailpage__posting-wrapper {
+        font-size: 1.4rem;
+        color: var(--softgarden-color2);
+        font-size: 42px;
+        font-weight: 700;
+        width: 90%;
+
+        .MsoListParagraphCxSpFirst {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
+    }
+
+    h2 {
+        font-size: 50px;
+        max-width: 80%;
+        font-weight: 700;
+        color: var(--softgarden-color2);
+
+        @media (max-width: 768px) {
+            font-size: 30px;
+        }
+    }
+
+    p {
+        margin: 30px auto;
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 20px;
+        color: black;
+        font-size: 1rem;
+        font-weight: normal;
+        margin: 10px auto 30px auto; 
+    }
+
+    .softgarden-detailpage__apply-button-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .softgarden-detailpage__apply-button {
+        background-color: var(--softgarden-color);
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 2px solid var(--softgarden-color);
+        border-radius: 30px;
+        margin: 30px auto;
+        display: block;
+
+        &:hover {
+            background-color: white;
+            color: var(--softgarden-color);;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        padding: 0 30px;
+    }
+
+
+}
+
+ /* Benefits */
+
+.softgarden-benefits__BE_textmodul {
+    padding: 50px 0;
+    @media (max-width: 992px) {
+        padding: 30px 0;
+    }
+
+    .softgarden-benefits__roundoverlay {
+        display: none;
+    }
+
+    &.softgarden-benefits__BackgroundLightgray {
+        background-color: lightgray;
+        position: relative;
+        margin: 0 100px;
+        overflow: hidden;
+
+        @media (max-width: 1140px) {
+            margin: 0 50px;
+        }
+        @media (max-width: 960px) {
+            margin: 0 30px;
+        }
+        @media (max-width: 768px) {
+            margin: 0 10px;
+        }
+
+        .softgarden-benefits__roundoverlay {
+            display: block;
+            position: absolute;
+            top: 10%;
+            right: -5vw;
+            opacity: 0.3;
+            width: 30%;
+            background-color: var(--primary-color-1);
+            border-radius: 50%;
+            @media (max-width: 768px) {
+                width: 50%;
+                top: 10%;
+            }
+            &:after {
+                content: "";
+                display: block;
+                padding-bottom: 100%;
+            }
+        }
+    }
+
+    .softgarden-benefits__BE_textmodul_flex {
+        justify-content: space-between;
+        .softgarden-benefits__Textmodul_holder {
+            padding: 20px 10px 20px 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+            @media (max-width: 830px) {
+                padding: 10px 5px 10px 0;
+                margin-bottom: 0;
+            }
+            &.softgarden-benefits__ThirdWidth {
+                width: 30%;
+                @media (max-width: 830px) {
+                    width: 100%;
+                }
+            }
+
+            .softgarden-benefits__Text {
+                position: relative;
+
+                .numberbox {
+                    position: relative;
+
+                    .numbertitle {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        width: max-content;
+                    }
+                }
+            }
+
+            .softgarden-benefits__OptionalIcon {
+                margin-bottom: 20px;
+                width: auto;
+                height: 80px;
+                @media (max-width: 768px) {
+                    height: 60px;
+                }
+            }
+        }
+    }
+}
+
+
+.softgarden-benefits__container {
+    max-width: 1400px;
+    padding: 0 50px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    @media (max-width: 992px) {
+        padding: 0 30px;
+        word-break: break-word;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 15px;
+        color: var(--primary-color-1);
+    }
+
+    ol {
+        list-style: decimal;
+        padding-left: 20px;
+    }
+
+    &.be_abstand {
+        padding: 0;
+    }
+}
