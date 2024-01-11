@@ -6,10 +6,7 @@ namespace brandcom\Softgarden;
 
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordViewer;
-
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\LiteralField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
@@ -22,7 +19,7 @@ use SilverStripe\Forms\GridField\GridField_ActionProvider;
 
 class JobModelAdmin extends ModelAdmin
 {
-    private static $menu_title = "Job-Section";
+    private static $menu_title = "Job-Import";
     private static $url_segment = "jobs";
     private static $managed_models = [JobDataObject::class];
     private static $menu_icon_class = 'font-icon-sync';
