@@ -44,21 +44,3 @@ Im Header-Image-Textfeld folgendes über den Tiny HTML Editor hinterlegen:
     </div>
     
 ```
-
-
-In der composer.json folgendes unter dem Punkt "extra" hinzufügen
-
- ```
-
-    "expose": [
-        "vendor/brandcom/silverstripe-softgarden/client/dist"
-    ]
-
-```
-
-Dann den folgenden Terminal-Befehl ausführen
-
-```
-    composer vendor-expose
-
-```
