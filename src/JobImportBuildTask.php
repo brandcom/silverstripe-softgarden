@@ -40,19 +40,19 @@ class JobImportBuildTask extends BuildTask
                 left: 0px;'>
             <h2>Der Import war erfolgreich</h2>
             <p id='lbl_back' style='font-size: 2vw; background: gray; padding: 20px; width: fit-content; color: white; border-radius: 8px;'>
-                Automatische Weiterleitung zurück erfolgt in 5 Sekunden
+                Die vorherige Seite wird in 7 Sekunden automatisch geladen.
             </p>
         </div>";
         
         echo "<script>
             const lbl_back = document.getElementById('lbl_back');
-            let time = 4;
+            let time = 7;
             setTimeout(() => {
                 window.location = '/admin/jobs';
-            }, 5000);
+            }, 7000);
             setInterval(() => {
-                lbl_back.innerHTML = 'Automatische Weiterleitung zurück erfolgt in ' + time + ' Sekunden';
                 time --;
+                lbl_back.innerHTML = 'Die vorherige Seite wird in ' + time + ' Sekunden automatisch geladen.';
             }, 1000);
         </script>";
     }
