@@ -51,4 +51,10 @@ $ElementalArea
             }
         }
     </script> 
+
+
 <% end_with %>
+
+<script>
+    var jobBenefits = $getBenefitsJson.RAW;
+</script>
