@@ -26,6 +26,23 @@ class SoftgardenJobDetailPageController extends \PageController
             return $this->httpError(404, 'Job nicht gefunden');
         }
 
+        // $this->getBenefitsJson();
+
         return ['Jobdetail' => $job];
     }
+
+
+    public function getBenefitsJson(): string
+	{
+		$benefits = [];
+		foreach(JobBenefitDataObj::get() as $benefit) {
+			$benefits[] = [
+                'benefit' => $benefit->Benefit,
+				'benefit_icon_url' => $benefit->BenefitIcon()->Link()
+            ];
+		}
+
+		return json_encode($benefits);
+	}
+
 }
