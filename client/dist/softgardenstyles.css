@@ -82,7 +82,7 @@
                 }
 
                 &:hover {
-                    background-color: var(--softgarden-color2);
+                    background-color: var(--softgarden-color);
                     color: white;
                 }
 
@@ -241,7 +241,7 @@
     }
 
     &.softgarden-benefits__BackgroundLightgray {
-        background-color: lightgray;
+        background-color: #f2f2f2;
         position: relative;
         margin: 0 100px;
         overflow: hidden;
