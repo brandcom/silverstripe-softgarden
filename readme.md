@@ -8,6 +8,7 @@ composer require brandcom/silverstripe-softgarden:dev-ss4
 
 ## Implementierung der API
 -Im Projekt muss unter app/src/BaseElements die Datei BaseElement.php vorhanden sein.
+
 Im Backend von Softgarden kann man für jedes Unternehmen einen API Key generieren.
 Schritt 1: Channel ID ermitteln https://dev.softgarden.de/frontend-v3/verfugbare-kanale/
 Schritt 2: folgende Variablen in der .env eintragen:
