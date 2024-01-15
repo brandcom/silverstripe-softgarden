@@ -1,4 +1,4 @@
-<% require css("/_resources/vendor/brandcom/silverstripe-softgarden/client/dist/softgardenstyles.css") %>
+<% require css("./vendor/brandcom/silverstripe-softgarden/client/dist/softgardenstyles.css") %>
 <div class="bc-softgarden__job-base-element">
     <div class="bc-softgarden__job-base-element-container">
         <h3 class="bc-softgarden__job-base-element-headline">

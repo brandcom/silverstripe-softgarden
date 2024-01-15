@@ -10,8 +10,8 @@ class SoftgardenJobDetailPageController extends \PageController
     protected function init()
     {
         parent::init();
-        Requirements::css('/_resources/vendor/brandcom/silverstripe-softgarden/client/dist/softgardenstyles.css');
-        Requirements::javascript('/_resources/vendor/brandcom/silverstripe-softgarden/client/dist/softgardenscripts.js');
+        Requirements::css('./vendor/brandcom/silverstripe-softgarden/client/dist/softgardenstyles.css');
+        Requirements::javascript('./vendor/brandcom/silverstripe-softgarden/client/dist/softgardenscripts.js');
     }
 
 
