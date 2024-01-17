@@ -103,14 +103,14 @@ class JobDataObject extends DataObject
             $jobDataObject->locale = isset($job["locale"]) ? $job["locale"] : null;
             $jobDataObject->jobAdText = isset($job["jobAdText"]) ? strip_tags($job["jobAdText"], ['<ul>', '<li>', '<p>', '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>' ]) : null;
             if (isset($job["jobStartDate"])) {
-                $formattedStartDate = self::convertToDate($job["jobStartDate"]);
+                $formattedStartDate = self::convertToDate($job["jobStartDate"], 'startdate');
                 $jobDataObject->jobStartDate = $formattedStartDate;
             } else {
                 $jobDataObject->jobStartDate = null;
             }
             $jobDataObject->job_ad_url = isset($job["job_ad_url"]) ? $job["job_ad_url"] : null;
             if (isset($job["postingLastUpdatedDate"])) {
-                $formattedDate = self::convertToDate($job["postingLastUpdatedDate"]);
+                $formattedDate = self::convertToDate($job["postingLastUpdatedDate"], 'lastupdate');
                 $jobDataObject->postingLastUpdatedDate = $formattedDate;
             } else {
                 $jobDataObject->postingLastUpdatedDate = null;
@@ -222,12 +222,17 @@ class JobDataObject extends DataObject
         }
     }
 
-    private function convertToDate(int $tmestmp): string
+    private function convertToDate(int $tmestmp, string $datetype): string
     {
         $lastUpdatedDateMilliseconds = $tmestmp;
         $seconds = $lastUpdatedDateMilliseconds / 1000;
         $date = new \DateTime("@$seconds");
-        $formattedDte = $date->format("d.m.Y");
+        if($datetype == 'startdate') {
+            $formattedDte = $date->format("d.m.Y");
+        }else {
+            $formattedDte = $date->format("Y-m-d");
+        }
+        
         return $formattedDte;
     }
 

@@ -5,7 +5,7 @@ $ElementalArea
     <div class="softgarden-benefits__container">
         <div class="Textmodul_holder" data-animate="" data-animation="slideInUp">
             <div class="Text"> 
-                <h5><span class="h2 primarycolor2">Deine Benefits bei uns:</span></h5>
+                <h5><span class="h2 primarycolor2">Deine Benefits bei BBS Gebäudetechnik:</span></h5>
             </div>
         </div>
         <div class="softgarden-benefits__BE_textmodul_flex flex flex-wrap" id="softgarden_benefit_wrapper"></div>
@@ -29,9 +29,9 @@ $ElementalArea
             "@context" : "https://schema.org/",
             "@type" : "JobPosting",
             "title" : "$externalPostingName",
-            "description" : "$Description",
+            "description" : "$jobAdText",
             "datePosted" : "$postingLastUpdatedDate",
-            "employmentType" : "$employmentTypes",
+            "employmentType" : "$workTimes",
             "hiringOrganization" : {
                 "@type" : "Organization",
                 "name" : "$company_name",
@@ -42,9 +42,9 @@ $ElementalArea
                 "@type": "Place",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "$geo_street",
-                    "addressLocality": "$Geo_name",
-                    "addressRegion": "$Geo_state",
+                    "streetAddress": "$SiteConfig.Strasse",
+                    "addressLocality": "$SiteConfig.Stadt",
+                    "addressRegion": "$SiteConfig.Bundesland",
                     "postalCode": "$SiteConfig.PLZ",
                     "addressCountry": "DE"
                 }
