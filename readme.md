@@ -21,6 +21,8 @@ SOFTGARDEN_API_Password='' # Kann leer bleiben, da basic auth
 
 SOFTGARDEN_API_CHANNEL_ID='channelID'
 
+SOFTGARDEN_AUTO_BUILDTASK_TOKEN='' # Für Cronjobs - hier kann ein token hinterlegt werden
+
 ## API Fetch auslösen -WIP
 Momentan unter der URL "BASEURL/dev/tasks/JobImportBuildTask"
 

@@ -1,11 +1,13 @@
 <?php
 
 namespace brandcom\Softgarden;
+
 use SilverStripe\View\Requirements;
+use SilverStripe\Core\Environment;
 
 class SoftgardenJobDetailPageController extends \PageController
 {
-    private static $allowed_actions = ["showjob"];
+    private static $allowed_actions = ["showjob", "jobAutoImport"];
 
     protected function init()
     {
@@ -13,8 +15,6 @@ class SoftgardenJobDetailPageController extends \PageController
         Requirements::css('./vendor/brandcom/silverstripe-softgarden/client/dist/softgardenstyles.css');
         Requirements::javascript('./vendor/brandcom/silverstripe-softgarden/client/dist/softgardenscripts.js');
     }
-
-
 
     public function showjob($request)
     {
@@ -42,5 +42,16 @@ class SoftgardenJobDetailPageController extends \PageController
 
 		return json_encode($benefits);
 	}
+
+
+    public function jobAutoImport($request): void
+    {
+        $requestedToken = Environment::getEnv("SOFTGARDEN_AUTO_BUILDTASK_TOKEN");
+        $token = $request->requestVar("token");
+        if($requestedToken == $token) {
+            $task = new JobAutoBuildTask();
+            $task->run($request);
+        }
+    }
 
 }
