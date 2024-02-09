@@ -36,6 +36,7 @@ setTimeout(() => {
     
         job_name_label.innerHTML = postingName;
         job_info_label.innerHTML = infoLabelContent;
+        document.title = postingName;
     
         //////////////////////////////////////////////
         //* Add and Render Benefits
