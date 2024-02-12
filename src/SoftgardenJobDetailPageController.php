@@ -9,6 +9,8 @@ class SoftgardenJobDetailPageController extends \PageController
 {
     private static $allowed_actions = ["showjob", "jobAutoImport"];
 
+    private $job;
+
     protected function init()
     {
         parent::init();
@@ -20,15 +22,30 @@ class SoftgardenJobDetailPageController extends \PageController
     {
         $jobID = $request->param("ID");
 
-        $job = JobDataObject::get()->filter('jobDbId', $jobID)->first();     
+        $this->job = JobDataObject::get()->filter('jobDbId', $jobID)->first();     
         
-        if (!$job || !$job->exists()) {
+        if (!$this->job || !$this->job->exists()) {
             return $this->httpError(404, 'Job nicht gefunden');
         }
 
-        return ['Jobdetail' => $job];
+        return ['Jobdetail' => $this->job];
     }
 
+    public function getTitle(): string 
+    {
+        return $this->job->externalPostingName;
+    }
+
+    public function getMetaTitle(): string 
+    {
+        return $this->getTitle();
+    }
+
+    public function getMetaDescription(): string 
+    {
+        $metaDesc = $this->getTitle() . ' ' . $this->job->geo_city;
+        return $metaDesc;
+    }
 
     public function getBenefitsJson(): string
 	{
