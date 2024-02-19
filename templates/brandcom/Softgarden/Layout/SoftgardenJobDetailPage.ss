@@ -1,5 +1,4 @@
 <% include HeaderImage %>
-$ElementalArea
 <div class="softgarden-benefits__BE_textmodul softgarden-benefits__BackgroundLightgray">
     <div class="softgarden-benefits__roundoverlay"></div>
     <div class="softgarden-benefits__container">
@@ -54,7 +53,7 @@ $ElementalArea
 
 
 <% end_with %>
-
+$ElementalArea
 <script>
     var jobBenefits = $getBenefitsJson.RAW;
 </script>
