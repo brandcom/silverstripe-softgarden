@@ -160,7 +160,8 @@
     color: var(--softgarden-color2);
     font-size: 42px;
     font-weight: 700;
-    width: 90%;
+    width: 60%;
+   
 }
 
 .MsoListParagraphCxSpFirst {
@@ -169,7 +170,7 @@
 
 .softgarden-detailpage h2 {
     font-size: 50px;
-    max-width: 80%;
+    max-width: 100%;
     font-weight: 700;
     color: var(--softgarden-color2);
 }
@@ -215,6 +216,12 @@
 }
 
 @media (max-width: 768px) {
+
+    .softgarden-detailpage__posting-wrapper {
+        width: 90%;
+       
+    }
+
     .softgarden-detailpage {
         padding: 0 30px;
     }
