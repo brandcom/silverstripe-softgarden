@@ -164,6 +164,15 @@
    
 }
 
+.softgarden-detailpage__job-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--softgarden-color2);
+    margin: 20px 0;
+    width: 70%;
+    margin-bottom: 50px;
+}
+
 .MsoListParagraphCxSpFirst {
     display: none;
 }
@@ -232,6 +241,10 @@
 
     .softgarden-detailpage h2 {
         font-size: 30px;
+    }
+
+    .softgarden-detailpage__job-title {
+        width: 100%;
     }
 }
 

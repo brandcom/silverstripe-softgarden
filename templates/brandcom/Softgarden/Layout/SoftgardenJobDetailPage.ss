@@ -13,7 +13,7 @@
 
 <% with $Jobdetail %>    
     <section class="softgarden-detailpage" data-worktime="$workTimes" data-workExperience="$workExperiences" data-worlPlace="$geo_city" data-workStartDate="$jobStartDate" id="jobinfos">
-            <h2 id="postingName" data-jobtitle="$externalPostingName" class="softgarden-detailpage__job-title"><span class="h4 primarycolor2">$externalPostingName</span></h2>
+            <h2 id="postingName" data-jobtitle="$externalPostingName" class="softgarden-detailpage__job-title">$externalPostingName</h2>
             <div class="softgarden-detailpage__posting-wrapper">
                 $jobAdText.RAW
             </div>
