@@ -5,6 +5,7 @@ setTimeout(() => {
     const jobinfos = document.getElementById("jobinfos");
     const posingtitle = document.getElementById("postingName");
     const softgarden_be_benefits = document.getElementById("softgarden_benefit_wrapper");
+    const header_image_src = document.querySelector('.image').getAttribute('src');
     
     
     //* It is importand, that the naming is identical. 
@@ -34,8 +35,12 @@ setTimeout(() => {
             infoLabelContent = infoLabelContent + ` | Ab ${workStartDate}`;
         }
     
+        //* Set Header Labels
         job_name_label.innerHTML = postingName;
         job_info_label.innerHTML = infoLabelContent;
+
+        //* Set Detail Image Src
+        document.getElementById('softgarden_detail_img').src = header_image_src;
     
         //////////////////////////////////////////////
         //* Add and Render Benefits

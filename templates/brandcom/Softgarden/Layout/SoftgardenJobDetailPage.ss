@@ -16,6 +16,7 @@
             <h2 id="postingName" data-jobtitle="$externalPostingName" class="softgarden-detailpage__job-title">$externalPostingName</h2>
             <div class="softgarden-detailpage__posting-wrapper">
                 $jobAdText.RAW
+                <img src="" class="softgarden-detailpage__detail-image" id="softgarden_detail_img" />
             </div>
             <div class="softgarden-detailpage__apply-button-area">
                 <a href="$applyOnlineLink" class="softgarden-detailpage__apply-button"> Jetzt bewerben </a>
