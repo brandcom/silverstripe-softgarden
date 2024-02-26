@@ -102,12 +102,8 @@ class JobDataObject extends DataObject
             $jobDataObject->geo_zip = isset($job["geo_zip"]) ? $job["geo_zip"] : null;
             $jobDataObject->locale = isset($job["locale"]) ? $job["locale"] : null;
             $jobDataObject->jobAdText = isset($job["jobAdText"]) ? strip_tags($job["jobAdText"], ['<ul>', '<li>', '<p>', '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>' ]) : null;
-            if (isset($job["jobStartDate"])) {
-                $formattedStartDate = self::convertToDate($job["jobStartDate"], 'startdate');
-                $jobDataObject->jobStartDate = $formattedStartDate;
-            } else {
-                $jobDataObject->jobStartDate = null;
-            }
+            $extractedStartDate = self::getStartdatum($job["jobAdText"]);
+            $jobDataObject->jobStartDate = $extractedStartDate;
             $jobDataObject->job_ad_url = isset($job["job_ad_url"]) ? $job["job_ad_url"] : null;
             if (isset($job["postingLastUpdatedDate"])) {
                 $formattedDate = self::convertToDate($job["postingLastUpdatedDate"], 'lastupdate');
@@ -234,6 +230,28 @@ class JobDataObject extends DataObject
         }
         
         return $formattedDte;
+    }
+
+    /**
+     * Retrieves the start date from the job advertisement text.
+     *
+     * @return string The start date of the job.
+     */
+    public function getStartdatum($job_text): string
+    {
+        $keyword = "Startdatum: ";
+        $jobText = $job_text;
+        $startdatum = "";
+
+        $pos = strpos($jobText, $keyword);
+        if ($pos !== false) {
+            $startdatumRaw = trim(substr($jobText, $pos + strlen($keyword)));
+            $startdatum = explode(" ", $startdatumRaw)[0]; 
+            if($startdatum == "ab") {
+                $startdatum = "ab " . explode(" ", $startdatumRaw)[1];
+            }
+        }
+        return $startdatum;
     }
 
     private static array $summary_fields = [
