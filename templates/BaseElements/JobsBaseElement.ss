@@ -17,7 +17,7 @@
                         <p class="bc-softgarden__job-base-element-p-worktime-mobile">$workTimes</p>
                     </div>
                     <div class="bc-softgarden__job-base-element-third bc-softgarden__worktime">
-                        <p class="bc-softgarden__job-base-element-p">$workTimes &shy;- ab $jobStartDate</p>
+                        <p class="bc-softgarden__job-base-element-p">$workTimes &shy; <% if  $jobStartDate %>- ab $jobStartDate <% end_if %></p>
                     </div>
                     <div class="bc-softgarden__job-base-element-third bc-softgarden__job-base-element-third-last">
                         <p class="bc-softgarden__job-base-element-p arrow">Mehr erfahren</p>
