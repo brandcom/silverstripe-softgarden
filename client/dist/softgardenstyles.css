@@ -17,6 +17,11 @@
             text-transform: uppercase;
             font-size: 2.625rem;
             line-height: 1.2;
+            hyphens: auto;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.5rem;
+            }
         }
 
         .bc-softgarden__job-base-element-jobwrapper {
@@ -135,6 +140,14 @@
                 }
             }
         }
+    }
+
+    .bc-softgarden__job-base-element-dropdown {
+        border: 1px solid var(--primary-color-2);
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+        border-radius: 0;
     }
 }
 
