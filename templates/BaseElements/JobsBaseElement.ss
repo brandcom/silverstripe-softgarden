@@ -66,7 +66,6 @@
 
         jobElements2.forEach((jobElement) => {
             const EmploymentTypeData = jobElement.getAttribute('data-EmploymentType');
-            console.log(employmentTypes.length);
             if (!employmentTypes.includes(EmploymentTypeData)) {
                 employmentTypes.push(EmploymentTypeData);
             }
