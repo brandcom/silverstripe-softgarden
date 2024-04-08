@@ -245,7 +245,7 @@ class JobDataObject extends DataObject
 
         $pos = strpos($jobText, $keyword);
         if ($pos !== false) {
-            $startdatumRaw = trim(substr($jobText, $pos + strlen($keyword)));
+            $startdatumRaw = substr($jobText, $pos + strlen($keyword), 10);
             $startdatum = explode(" ", $startdatumRaw)[0]; 
             if($startdatum == "ab") {
                 $startdatum = "ab " . explode(" ", $startdatumRaw)[1];
