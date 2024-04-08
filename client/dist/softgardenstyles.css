@@ -1,5 +1,5 @@
 :root {
-    --softgarden-color: rgb(255, 21, 60);
+    --softgarden-color: var(--primary-color-1);
     --softgarden-color2: #23295b;
   }
 
