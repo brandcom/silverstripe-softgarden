@@ -222,7 +222,6 @@
 .softgarden-detailpage ul {
     list-style: disc;
     padding-left: 20px;
-    color: black;
     font-size: 1rem;
     font-weight: normal;
     margin: 10px auto 30px auto; 
@@ -338,6 +337,7 @@
             position: relative;
             z-index: 2;
             margin-bottom: 2rem;
+            color: var(--softgarden-color2);
             @media (max-width: 830px) {
                 padding: 10px 5px 10px 0;
                 margin-bottom: 0;
