@@ -43,15 +43,31 @@ setTimeout(() => {
         //* Add and Render Benefits
         //////////////////////////////////////////////
         if (softgarden_be_benefits) {
-    
             //* Parse last ul-li tags into array and append to benefit
             try {
                 //* Get the Data from the Div on detail Page, where the job Ad Text is rendered
                 const softgardenJobContent = document.querySelector('.softgarden-detailpage__posting-wrapper').innerHTML;
                 //* Get the last ul Tag and push li tags in liElements
                 const liElements = extractLiElements(softgardenJobContent);
+
+                //* Benefits Limit
+                const benefitTitle = document.getElementById('softgarden_benefit_title'); 
+                let benefitsLimit = benefitTitle.getAttribute('data-MaxBenefits'); 
+                if(benefitsLimit == '') {
+                    benefitsLimit = liElements.length; //* - Set Default Limit if not set
+                }
+                if(benefitsLimit > liElements.length) {
+                    benefitsLimit = liElements.length; //* - Set Limit to the amount of benefits if limit is higher than amount of benefits
+                }
+                // * Set Title with Limit
+                benefitTitle.innerHTML = `Deine Top ${benefitsLimit} Benefits bei uns:`;
+
                 //* Push the tags into the job benefit array 
                 for (let i = 0; i < liElements.length; i++) {
+                    //* Exit for loop when limit is reached
+                    if(i >= benefitsLimit) {
+                        break;
+                    }
                     const benefitIndex = doesObjectExist(benefit_list, 'benefit', liElements[i]);
                     if (benefitIndex !== -1) {
                         job_benefits.push({benefit: `${liElements[i]}`, benefit_icon_url: `${benefit_list[benefitIndex].benefit_icon_url}`})
