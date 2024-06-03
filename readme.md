@@ -60,3 +60,12 @@ Um vorhandene Jobs anzuzeigen, setzt man an beliebiger Stelle das BaseElement "S
 Es muss eine Seite mit dem Namen "Jobdetails" vom Typ "Softgarden Job Detail Page" eingerichtet werden. In den Einstellungen den Haken bei Sichtbarkeit (Menü und Suche) entfernen.
 Auf der Jobdetails Seite unter dem Punkt Header ein geeignetes Bild wählen. Das Bild muss zu jedem Beruf passen, da hier kein individuelles Bild ausgespielt wird.
 
+
+# NEU 
+
+## Benefits limitieren
+
+- Die auf der Detailseite angezeigten Benefits sind nun limitierbar. 
+- Auf der Jobdetails Page befindet sich hierfür folgendes Eingabefeld "Maximale Anzahl der Benefits".
+- Wird nichts eingetragen, werden alle ausgegeben.
+- Es wird eine dynamische Überschrift mit der Anzahl der Benefits angezeigt z.B. "DEINE TOP 3 BENEFITS BEI UNS"
