@@ -91,7 +91,7 @@ class JobsBaseElement extends \BaseElement
             "Ausbildung, Studium" => "Ausbildung",
         )), "Content");
 
-        $fields->addFieldToTab("Root.Main", new DropdownField("ShowStandortFilter", "Filtern der vorhandenen Standorte zeigen)" , array(
+        $fields->addFieldToTab("Root.Main", new DropdownField("ShowStandortFilter", "Filtern der vorhandenen Standorte zeigen" , array(
             "0" => "Nein",
             "1" => "Ja",
         )), "Content");
