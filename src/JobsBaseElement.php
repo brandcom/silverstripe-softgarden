@@ -20,7 +20,6 @@ class JobsBaseElement extends \BaseElement
 
     private static $inline_editable = false;
 
-    private static $geoCities = [];
 
     private static $db = [
         "Headline" => "Varchar(255)",
