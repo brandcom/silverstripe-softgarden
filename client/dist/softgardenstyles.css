@@ -88,7 +88,7 @@
     background-color: transparent;
     color: var(--primary-color-2);
     border-radius: 20px;
-    border: 1px solid var(--primary-color-2);
+    border: 1px solid var(--softgarden-color2);
     text-align: left;
     font-weight: 700;
 }
@@ -291,6 +291,10 @@
 
 /** Benefits */
 
+.softgarden-benefits--title {
+    color: var(--softgarden-color2);
+}
+
 /* Basis-Modul */
 .softgarden-benefits__BE_textmodul {
     padding: 50px 0;
@@ -396,6 +400,7 @@
 /* Text-Inhalte */
 .softgarden-benefits__Text {
     position: relative;
+    color: var(--softgarden-color2);
 }
 
 /* Numberbox-Layout */
