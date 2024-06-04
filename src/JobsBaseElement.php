@@ -5,6 +5,8 @@ namespace brandcom\Softgarden;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
 
 class JobsBaseElement extends \BaseElement
 {
@@ -18,12 +20,12 @@ class JobsBaseElement extends \BaseElement
 
     private static $inline_editable = false;
 
- 
+    private static $geoCities = [];
 
     private static $db = [
         "Headline" => "Varchar(255)",
         "EmploymentTypeFilter" => "Varchar(255)",
-        "ShowDropdown" => "Boolean"
+        "ShowStandortFilter" => "Boolean"
     ];
 
     //* Get all Jobs from the Softgarden API
@@ -45,6 +47,7 @@ class JobsBaseElement extends \BaseElement
 
         return $jobs;
     }
+    
 
     //* Filters the jobs based on the employmentType
     function getFilteredSoftgardenJobs($filter_arg)
@@ -56,6 +59,22 @@ class JobsBaseElement extends \BaseElement
         }
         $filteredJobs = $jobs->filter('employmentTypes', $filter_arg);
         return $filteredJobs;
+    }
+
+
+    //* get all geo_city from the jobs
+    public function getGeoCities()
+    {
+        $jobs = $this->getAllSoftgardenJobs();
+        $citiesList = ArrayList::create();
+        foreach ($jobs as $job) {
+            $city = $job->geo_city;
+            if($city && !in_array($city, $citiesList->column('City')))
+            {
+                $citiesList->push(ArrayData::create(['City' => $city]));
+            }
+        }
+        return $citiesList;
     }
 
 
@@ -72,9 +91,9 @@ class JobsBaseElement extends \BaseElement
             "Ausbildung, Studium" => "Ausbildung",
         )), "Content");
 
-        $fields->addFieldToTab("Root.Main", new DropdownField("ShowDropdown", "Dropdown zum Filtern der Anstellungsart anzeigen (Nur wenn Vorabfilter auf 'Alle' gesetzt ist und nur bei einem BaseElement pro Seite)" , array(
-            "1" => "Ja",
+        $fields->addFieldToTab("Root.Main", new DropdownField("ShowStandortFilter", "Filtern der vorhandenen Standorte zeigen)" , array(
             "0" => "Nein",
+            "1" => "Ja",
         )), "Content");
 
         return $fields;

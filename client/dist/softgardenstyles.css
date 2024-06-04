@@ -158,7 +158,8 @@
     }
 }
 
-.bc-softgarden__job-base-element-dropdown {
+.bc-softgarden__job-base-element-dropdown,
+.bc-softgarden__job-base-element-dropdown-locations  {
     border: 1px solid var(--primary-color-2);
     padding: 10px;
     margin: 10px 0;
