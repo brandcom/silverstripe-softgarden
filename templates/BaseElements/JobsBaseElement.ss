@@ -20,7 +20,7 @@
                 <div class="bc-softgarden__job-base-element-marker-wrapper">
                     <div class="bc-softgarden__job-base-element-marker-title"><p>Stellen&shy;bezeichnung</p></div>
                     <div class="bc-softgarden__job-base-element-marker-title bc-softgarden__worktime"><p>Art</p></div>
-                    <div class="bc-softgarden__job-base-element-marker-title bc-softgarden__job-base-element-marker-title-last"><p><% if $ShowStandortFilter %>Standort <%end_if%></p></div>
+                    <div class="bc-softgarden__job-base-element-marker-title bc-softgarden__job-base-element-marker-title-last"><p><% if $ShowStandortFilter %>Ort <%end_if%></p></div>
                 </div>
                 <% if $ShowStandortFilter %>
                     <% loop $getFilteredSoftgardenJobs($EmploymentTypeFilter) %>
