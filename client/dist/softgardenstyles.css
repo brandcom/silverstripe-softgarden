@@ -296,8 +296,8 @@
 
 /** Benefits */
 
-.softgarden-benefits--title {
-    color: var(--softgarden-color2);
+#softgarden_benefit_title {
+    color: rgb(35, 41, 91);
 }
 
 /* Basis-Modul */
@@ -405,7 +405,7 @@
 /* Text-Inhalte */
 .softgarden-benefits__Text {
     position: relative;
-    color: var(--softgarden-color2);
+    color: rgb(35, 41, 91);
 }
 
 /* Numberbox-Layout */
