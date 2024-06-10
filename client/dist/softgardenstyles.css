@@ -158,6 +158,10 @@
     }
 }
 
+.bc-softgarden__location-filter {
+    margin-top: 40px;
+}
+
 .bc-softgarden__job-base-element-dropdown,
 .bc-softgarden__job-base-element-dropdown-locations  {
     border: 1px solid var(--primary-color-2);

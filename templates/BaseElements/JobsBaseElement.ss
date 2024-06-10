@@ -6,7 +6,7 @@
         </h3>
 
         <% if $ShowStandortFilter %>
-            <h3 class="h4">Filter für Raum, Gebiet</h3>
+            <h3 class="h4 bc-softgarden__location-filter">Filter für Raum, Gebiet</h3>
             <select class="bc-softgarden__job-base-element-dropdown-locations" onchange="filter_Location(this.value)">
                 <option value="empty">Alle</option>
                 <% loop $getGeoCities %>
