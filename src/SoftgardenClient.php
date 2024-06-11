@@ -23,7 +23,7 @@ class SoftgardenClient
         $this->password = Environment::getEnv("SOFTGARDEN_API_Password") ?: '';
         $this->channelId = Environment::getEnv("SOFTGARDEN_API_CHANNEL_ID") ?: '';
     
-        if (empty($this->username) || empty($this->password) || empty($this->channelId)) {
+        if (empty($this->username) || empty($this->channelId)) {
             throw new \Exception('Die erforderlichen Umgebungsvariablen sind nicht gesetzt.');
         }
     }
