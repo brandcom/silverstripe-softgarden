@@ -19,9 +19,13 @@ class SoftgardenClient
 
     public function __construct()
     {
-        $this->username = Environment::getEnv("SOFTGARDEN_API_KEY");
-        $this->password = Environment::getEnv("SOFTGARDEN_API_Password");
-        $this->channelId = Environment::getEnv("SOFTGARDEN_API_CHANNEL_ID");
+        $this->username = Environment::getEnv("SOFTGARDEN_API_KEY") ?: '';
+        $this->password = Environment::getEnv("SOFTGARDEN_API_Password") ?: '';
+        $this->channelId = Environment::getEnv("SOFTGARDEN_API_CHANNEL_ID") ?: '';
+    
+        if (empty($this->username) || empty($this->password) || empty($this->channelId)) {
+            throw new \Exception('Die erforderlichen Umgebungsvariablen sind nicht gesetzt.');
+        }
     }
 
     public function getAllJobs(): array
