@@ -27,14 +27,14 @@ class JobModelAdmin extends ModelAdmin
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
-
+    
         if ($this->modelClass == JobDataObject::class) {
             // Creating a custom GridField configuration
             $config = GridFieldConfig_RecordViewer::create();
-
+    
             // Adding a custom button to the GridField
             $config->addComponent(new CustomGridFieldButton());
-
+    
             // Creating the GridField
             $gridField = GridField::create(
                 $this->sanitiseClassName($this->modelClass),
@@ -42,14 +42,14 @@ class JobModelAdmin extends ModelAdmin
                 $this->getList(),
                 $config
             );
-
-                // Set the form for the GridField
-                $gridField->setForm($form);
-
+    
+            // Set the form for the GridField
+            $gridField->setForm($form);
+    
             // Inserting the GridField into the form
-            $form->Fields()->insertBefore($gridField, 'Root');
+            $form->Fields()->insertBefore($gridField->getName(), $gridField);
         }
-
+    
         return $form;
     }
 
