@@ -37,6 +37,8 @@ composer require brandcom/silverstripe-softgarden:dev-ss4
 
 ## .ENV Variablen
 
+#Softgarden API
+
 SOFTGARDEN_API_KEY='ClientId'
 
 SOFTGARDEN_API_Password='' # Kann leer bleiben, da basic auth
