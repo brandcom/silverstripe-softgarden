@@ -7,6 +7,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
+use SilverStripe\Forms\CheckboxField;
 
 class JobsBaseElement extends \BaseElement
 {
@@ -24,7 +25,8 @@ class JobsBaseElement extends \BaseElement
     private static $db = [
         "Headline" => "Varchar(255)",
         "EmploymentTypeFilter" => "Varchar(255)",
-        "ShowStandortFilter" => "Boolean"
+        "ShowStandortFilter" => "Boolean",
+        "ShowCompanyName" => "Boolean",
     ];
 
     //* Get all Jobs from the Softgarden API
@@ -81,6 +83,10 @@ class JobsBaseElement extends \BaseElement
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
+
+        $fields->addFieldsToTab("Root.Main", [
+            new CheckboxField("ShowCompanyName", "Firmenname anzeigen")
+        ], "Content");
 
         $fields->addFieldToTab("Root.Main", new TextField("Headline", "Überschrift"), "Content");
         
