@@ -7,7 +7,7 @@
 
         <% if $ShowStandortFilter %>
             <h3 class="h4 bc-softgarden__location-filter">Filter für Raum, Gebiet</h3>
-            <select class="bc-softgarden__job-base-element-dropdown-locations" onchange="filter_Location(this.value)">
+            <select class="bc-softgarden__job-base-element-dropdown-locations">
                 <option value="empty">Alle</option>
                 <% loop $getGeoCities %>
                     <option value="$City">$City</option>
@@ -108,27 +108,3 @@
     </div>
 </div>
 
-<script>
-
-    function filter_Location(City) {
-        const jobElements = document.querySelectorAll('.bc-softgarden__job-base-element-overlay-job');
-        jobElements.forEach((jobElement) => {
-            if (City === 'empty') {
-                jobElement.style.display = 'flex';
-            } else {
-                const CityData = jobElement.getAttribute('data-location');
-                if (CityData === City) {
-                    jobElement.style.display = 'flex';
-                } else {
-                    jobElement.style.display = 'none';
-                }
-            }
-        });
-        //* Set all location filter values to selected location
-        const all_location_filter = document.querySelectorAll('.bc-softgarden__job-base-element-dropdown-locations');
-        all_location_filter.forEach((location_filter) => {
-            location_filter.value = City;
-        });
-    }
-
-</script>
