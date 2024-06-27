@@ -26,7 +26,7 @@ composer require brandcom/silverstripe-softgarden:dev-ss4
 -Im Header-Image-Textfeld folgendes über den Tiny HTML Editor hinterlegen:
 
 ```
-    <div class="container headerimage_text text-white">
+    <div>
         <h1><span id="softgarden__job_name_label" class="h1">Jobbezeichnung</span></h1>
         <h2><span id="softgarden__job_infos_label" class="h4">Infos:</span></h2>
     </div>
@@ -65,9 +65,64 @@ Auf der Jobdetails Seite unter dem Punkt Header ein geeignetes Bild wählen. Das
 
 # NEU 
 
-## Benefits limitieren
+### Benefits limitieren
 
 - Die auf der Detailseite angezeigten Benefits sind nun limitierbar. 
 - Auf der Jobdetails Page befindet sich hierfür folgendes Eingabefeld "Maximale Anzahl der Benefits".
 - Wird nichts eingetragen, werden alle ausgegeben.
 - Es wird eine dynamische Überschrift mit der Anzahl der Benefits angezeigt z.B. "DEINE TOP 3 BENEFITS BEI UNS"
+
+
+
+# Standort Filter für das Softgarden Job Base Element
+
+- Im Base-Element "Softgarden-Job-Base-Element" kann ein Standortfilter aktiviert werden.
+- Es wird extra JS Code benötigt, welcher in das Projekt eingebunden werden muss.
+
+### In App.js
+
+```
+import { filter_jobs } from "./js/SoftgardenBaseElementFilter";
+
+...
+
+filter_jobs();
+
+```
+
+### In erstellter Datei SoftgardenBaseElementFilter.js
+```
+
+export function filter_jobs() {
+
+    const softgardenBaseElem = document.querySelectorAll(".bc-softgarden__job-base-element");
+    
+    if (softgardenBaseElem.length > 0) {
+        const filterTriggers = document.querySelectorAll('.bc-softgarden__job-base-element-dropdown-locations');
+    
+        filterTriggers.forEach((filterTrigger) => {
+            filterTrigger.addEventListener('change', () => { 
+                const jobElements = document.querySelectorAll(".bc-softgarden__job-base-element-overlay-job");
+                    jobElements.forEach((jobElement) => {
+                        if (filterTrigger.value === "empty") {
+                            jobElement.style.display = "flex";
+                        } else {
+                            const CityData = jobElement.getAttribute("data-location");
+                            if (CityData === filterTrigger.value) {
+                                jobElement.style.display = "flex";
+                            } else {
+                                jobElement.style.display = "none";
+                            }
+                        }
+                    });
+                    //* Set all location filter values to selected location
+                    const all_location_filter = document.querySelectorAll(".bc-softgarden__job-base-element-dropdown-locations");
+                    all_location_filter.forEach((location_filter) => {
+                        location_filter.value = filterTrigger.value ;
+                    });
+            })
+        })
+    }
+}
+
+```
