@@ -45,7 +45,7 @@ class SoftgardenJobDetailPageController extends \PageController
      */
     public function getTitle(): string
     {
-        return $this->job->externalPostingName;
+        return $this->job->externalPostingName ?? '';
     }
 
     /**
@@ -55,7 +55,7 @@ class SoftgardenJobDetailPageController extends \PageController
      */
     public function getMetaTitle(): string
     {
-        return $this->getTitle();
+        return $this->getTitle() ?? '';
     }
 
     /**
@@ -68,7 +68,7 @@ class SoftgardenJobDetailPageController extends \PageController
     public function getMetaDescription(): string
     {
         $metaDesc = $this->getTitle() . ' ' . $this->job->geo_city;
-        return $metaDesc;
+        return $metaDesc ?? '';
     }
 
     /**
@@ -89,7 +89,7 @@ class SoftgardenJobDetailPageController extends \PageController
             ];
         }
 
-        return json_encode($benefits);
+        return json_encode($benefits) ?? '';
     }
 
 
