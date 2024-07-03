@@ -126,3 +126,17 @@ export function filter_jobs() {
 }
 
 ```
+
+# Sonderfall mehrere API Keys pro Seite
+
+Sollten mehrere API Keys pro Seite vorhanden sein, müssen diese in der .env durchnummeriert werden.
+
+
+SOFTGARDEN_API_KEY1='KEY1'
+
+SOFTGARDEN_API_KEY2='KEY2'
+
+SOFTGARDEN_API_CHANNEL_ID1='ID1'
+
+SOFTGARDEN_API_CHANNEL_ID2='ID2'
+

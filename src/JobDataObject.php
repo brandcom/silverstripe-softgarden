@@ -10,6 +10,7 @@ use SilverStripe\ORM\DataObject;
  * Repräsentiert eine Stellenanzeige und hat ähnliche $db-Felder, wie
  * die Jobs in der API
  * @property int $jobDbId
+ * @property string $channelId
  * @property string $externalPostingName
  * @property string $applyOnlineLink
  * @property string $company_id
@@ -42,6 +43,7 @@ class JobDataObject extends DataObject
 
     private static array $db = [
         "jobDbId" => "Int",
+        "channelId" => "Varchar",
         "externalPostingName" => "Varchar",
         "applyOnlineLink" => "Text",
         "company_id" => "Varchar",
@@ -86,6 +88,7 @@ class JobDataObject extends DataObject
             $companyName = $job["company_name"];
 
             $jobDataObject->jobDbId = isset($job["jobDbId"]) ? $job["jobDbId"] : null;
+            $jobDataObject->channelId = isset($job["channelId"]) ? $job["channelId"] : null;
             $jobDataObject->externalPostingName = isset($job["externalPostingName"])
                 ? $job["externalPostingName"]
                 : null;
