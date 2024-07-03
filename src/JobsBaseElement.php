@@ -27,6 +27,7 @@ class JobsBaseElement extends \BaseElement
         "EmploymentTypeFilter" => "Varchar(255)",
         "ShowStandortFilter" => "Boolean",
         "ShowCompanyName" => "Boolean",
+        "ChannelId" => "Varchar(255)",
     ];
 
     //* Get all Jobs from the Softgarden API
@@ -100,6 +101,8 @@ class JobsBaseElement extends \BaseElement
             "0" => "Nein",
             "1" => "Ja",
         )), "Content");
+
+        $fields->addFieldToTab("Root.Main", new TextField("ChannelId", "Nur spezielle Channel ID anzeigen"), "Content");
 
         return $fields;
     }
