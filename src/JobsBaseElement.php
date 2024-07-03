@@ -51,15 +51,30 @@ class JobsBaseElement extends \BaseElement
     }
     
 
+
     //* Filters the jobs based on the employmentType
     function getFilteredSoftgardenJobs($filter_arg)
     {
         $jobs = $this->getAllSoftgardenJobs();
+        $OnlyChannelId = $this->OnlyChannelId;
+
+        //* If several API keys are used, filter the jobs based on the channel ID
+        if($OnlyChannelId !== null)
+        {
+            $jobs = $jobs->filter('channelId', $OnlyChannelId);
+        }
         if($filter_arg == 'all')
         {
             return $jobs;
         }
+
+        //* if the filter is not 'all' filter the jobs based on the employmentType
         $filteredJobs = $jobs->filter('employmentTypes', $filter_arg);
+        //* If several API keys are used, filter the jobs based on the channel ID
+        if($OnlyChannelId !== null)
+        {
+           $filteredJobs =$filteredJobs->filter('channelId', $OnlyChannelId);
+        }
         return $filteredJobs;
     }
 
