@@ -82,7 +82,7 @@ class JobDataObject extends DataObject
         }
 
         //Die Ergebnisse durchlaufen und JobDataObjects erstellen
-        foreach ($jobs["results"] as $job) {
+        foreach ($jobs as $job) {
             $jobDataObject = new JobDataObject();
 
             $companyName = $job["company_name"];
