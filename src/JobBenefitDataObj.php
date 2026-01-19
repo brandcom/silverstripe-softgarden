@@ -35,5 +35,4 @@ class JobBenefitDataObj extends DataObject
 
         return $fields;
     }
-
 }
