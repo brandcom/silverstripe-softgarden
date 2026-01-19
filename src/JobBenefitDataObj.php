@@ -2,7 +2,7 @@
 
 namespace brandcom\Softgarden;
 
-use SilverStripe\Assets\Image;
+use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataObject;
 
 
@@ -17,7 +17,7 @@ class JobBenefitDataObj extends DataObject
     ];
 
     private static array $has_one = [
-        'BenefitIcon' => Image::class,
+        'BenefitIcon' => File::class,
     ];
 
     private static array $summary_fields = [
