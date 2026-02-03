@@ -4,6 +4,7 @@ namespace brandcom\Softgarden;
 
 use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\TextareaField;
 
 
 class JobBenefitDataObj extends DataObject
@@ -13,7 +14,7 @@ class JobBenefitDataObj extends DataObject
 
     private static array $db = [
         'SortOrder' => 'Int',
-        'Benefit' => 'Varchar(255)',
+        'Benefit' => 'Text',
     ];
 
     private static array $has_one = [
@@ -30,9 +31,18 @@ class JobBenefitDataObj extends DataObject
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->removeFieldFromTab("Root.Main", "PageID");
-        $fields->removeFieldFromTab("Root.Main", "SortOrder");
 
+        $fields->removeByName(['PageID', 'SortOrder']);
+
+        $fields->addFieldToTab(
+            'Root.Main',
+            TextareaField::create(
+                'Benefit',
+                'Keywords'
+            )->setDescription(
+                'Keywords, denen dieser Icon zugeordnet werden soll'
+            )
+        );
         return $fields;
     }
 }
