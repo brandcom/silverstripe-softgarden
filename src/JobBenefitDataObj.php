@@ -40,7 +40,7 @@ class JobBenefitDataObj extends DataObject
                 'Benefit',
                 'Keywords'
             )->setDescription(
-                'Keywords, denen dieser Icon zugeordnet werden soll'
+                'Keywords, denen dieses Icon zugeordnet werden soll. Die Keywords bitte mit einem Semikolon (;) trennen.'
             )
         );
         return $fields;
