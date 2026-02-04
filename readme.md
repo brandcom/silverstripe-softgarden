@@ -135,3 +135,7 @@ SOFTGARDEN_API_KEY2='KEY2'
 SOFTGARDEN_API_CHANNEL_ID1='ID1'
 
 SOFTGARDEN_API_CHANNEL_ID2='ID2'
+
+## NEU in dev-ss5
+
+Es können nun mehrere Keywords bei den Benefits übergeben werden.
