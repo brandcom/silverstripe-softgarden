@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace brandcom\Softgarden;
 
 use SilverStripe\Admin\ModelAdmin;
-use SilverStripe\Forms\GridField\GridFieldConfig_RecordViewer;
-use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordViewer;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 
 
 /**
@@ -23,17 +25,6 @@ class JobModelAdmin extends ModelAdmin
     private static $url_segment = "jobs";
     private static $managed_models = [JobDataObject::class];
     private static $menu_icon_class = 'font-icon-sync';
-
-    private static $allowed_actions = ['importjobs'];
-
-    public function importjobs($request)
-    {
-        $client = new SoftgardenClient();
-        $jobs = $client->getAllJobs();
-        (new JobDataObject())->saveJobs($jobs);
-
-        return $this->redirect($this->Link());
-    }
 
     public function getEditForm($id = null, $fields = null)
     {
@@ -69,7 +60,7 @@ class CustomGridFieldButton implements GridField_HTMLProvider, GridField_ActionP
 {
     public function getHTMLFragments($gridField)
     {
-        $link = Controller::join_links('/admin/jobs/importjobs');
+        $link = Controller::join_links('/softgarden-import-action');
         $button = '<a href="' . $link . '" class="ss-ui-button" style="background-color: blue; padding: 10px 15px; color: white; border-radius: 8px; letter-spacing: 2px;">Stellenanzeigen IMPORTIEREN</a>';
 
         return [
@@ -87,5 +78,24 @@ class CustomGridFieldButton implements GridField_HTMLProvider, GridField_ActionP
         if ($actionName == 'mycustomaction') {
             return Controller::curr()->redirectBack();
         }
+    }
+}
+
+class JobImportAdminController extends Controller
+{
+    private static $allowed_actions = ['index'];
+
+    public function index($request)
+    {
+        if (!Permission::check('ADMIN')) {
+            Security::permissionFailure($this);
+            return;
+        }
+
+        $client = new SoftgardenClient();
+        $jobs = $client->getAllJobs();
+        (new JobDataObject())->saveJobs($jobs);
+
+        return $this->redirect('/admin/jobs');
     }
 }

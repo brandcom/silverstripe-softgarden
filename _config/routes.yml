@@ -1,0 +1,6 @@
+---
+Name: softgarden-routes
+---
+SilverStripe\Control\Director:
+  rules:
+    "softgarden-import-action": 'brandcom\Softgarden\JobImportAdminController'
