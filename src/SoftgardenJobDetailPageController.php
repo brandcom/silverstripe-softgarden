@@ -108,9 +108,9 @@ class SoftgardenJobDetailPageController extends \PageController
         $requestedToken = Environment::getEnv("SOFTGARDEN_AUTO_BUILDTASK_TOKEN");
         $token = $request->requestVar("token");
         if ($requestedToken == $token) {
-            $task = new JobAutoBuildTask();
-            $task->run($request);
+            $client = new SoftgardenClient();
+            $jobs = $client->getAllJobs();
+            (new JobDataObject())->saveJobs($jobs);
         }
     }
-
 }

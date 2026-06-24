@@ -27,39 +27,38 @@ class JobModelAdmin extends ModelAdmin
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
-    
-        if ($this->modelClass == JobDataObject::class) {
+
+        if ($this->getModelClass() == JobDataObject::class) {
             // Creating a custom GridField configuration
             $config = GridFieldConfig_RecordViewer::create();
-    
+
             // Adding a custom button to the GridField
             $config->addComponent(new CustomGridFieldButton());
-    
+
             // Creating the GridField
             $gridField = GridField::create(
-                $this->sanitiseClassName($this->modelClass),
+                $this->sanitiseClassName($this->getModelClass()),
                 false,
                 $this->getList(),
                 $config
             );
-    
+
             // Set the form for the GridField
             $gridField->setForm($form);
-    
+
             // Inserting the GridField into the form
             $form->Fields()->insertBefore($gridField->getName(), $gridField);
         }
-    
+
         return $form;
     }
-
 }
 
 class CustomGridFieldButton implements GridField_HTMLProvider, GridField_ActionProvider
 {
     public function getHTMLFragments($gridField)
     {
-        $link = Controller::join_links('/dev/tasks/brandcom-Softgarden-JobImportBuildTask');
+        $link = Controller::join_links('/dev/tasks/softgarden-import');
         $button = '<a href="' . $link . '" class="ss-ui-button" style="background-color: blue; padding: 10px 15px; color: white; border-radius: 8px; letter-spacing: 2px;">Stellenanzeigen IMPORTIEREN</a>';
 
         return [

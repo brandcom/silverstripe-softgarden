@@ -20,6 +20,10 @@ class SoftgardenJobDetailPage extends \Page
         'SoftgardenBenefitsLimit' => 'Varchar(255)',
     ];
 
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => ['SoftgardenBenefitsLimit'],
+    ];
+
 
     public function getCMSFields()
     {

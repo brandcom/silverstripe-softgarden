@@ -3,8 +3,8 @@
     "type": "silverstripe-vendormodule",
     "description": "",
     "require": {
-        "php": "^8.1",
-        "silverstripe/framework": "^5"
+        "php": "^8.3",
+        "silverstripe/framework": "^6"
     },
     "autoload": {
         "psr-4": {

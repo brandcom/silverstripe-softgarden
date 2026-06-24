@@ -5,8 +5,8 @@ namespace brandcom\Softgarden;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Forms\CheckboxField;
 
 class JobsBaseElement extends \BaseElement
@@ -15,7 +15,7 @@ class JobsBaseElement extends \BaseElement
 
     private static $singular_name = "Softgarden Jobs";
 
-    private static $description = "Fügt ein Element ein, welches alle verfügbaren Jobs anzeigt.";
+    private static string $class_description = "Fügt ein Element ein, welches alle verfügbaren Jobs anzeigt.";
 
     private static $icon = "font-icon-block-table-data";
 
@@ -49,7 +49,7 @@ class JobsBaseElement extends \BaseElement
 
         return $jobs;
     }
-    
+
 
 
     //* Filters the jobs based on the employmentType
@@ -59,21 +59,18 @@ class JobsBaseElement extends \BaseElement
         $OnlyChannelId = $this->OnlyChannelId;
 
         //* If several API keys are used, filter the jobs based on the channel ID
-        if($OnlyChannelId !== null)
-        {
+        if ($OnlyChannelId !== null) {
             $jobs = $jobs->filter('channelId', $OnlyChannelId);
         }
-        if($filter_arg == 'all')
-        {
+        if ($filter_arg == 'all') {
             return $jobs;
         }
 
         //* if the filter is not 'all' filter the jobs based on the employmentType
         $filteredJobs = $jobs->filter('employmentTypes', $filter_arg);
         //* If several API keys are used, filter the jobs based on the channel ID
-        if($OnlyChannelId !== null)
-        {
-           $filteredJobs =$filteredJobs->filter('channelId', $OnlyChannelId);
+        if ($OnlyChannelId !== null) {
+            $filteredJobs = $filteredJobs->filter('channelId', $OnlyChannelId);
         }
         return $filteredJobs;
     }
@@ -86,8 +83,7 @@ class JobsBaseElement extends \BaseElement
         $citiesList = ArrayList::create();
         foreach ($jobs as $job) {
             $city = $job->geo_city;
-            if($city && !in_array($city, $citiesList->column('City')))
-            {
+            if ($city && !in_array($city, $citiesList->column('City'))) {
                 $citiesList->push(ArrayData::create(['City' => $city]));
             }
         }
@@ -105,14 +101,14 @@ class JobsBaseElement extends \BaseElement
         ], "Content");
 
         $fields->addFieldToTab("Root.Main", new TextField("Headline", "Überschrift"), "Content");
-        
+
         $fields->addFieldToTab("Root.Main", new DropdownField("EmploymentTypeFilter", "Vorab filtern nach Beschäftigungsart", array(
             "all" => "Alle",
             "Feste Anstellung" => "Vollzeit",
             "Ausbildung, Studium" => "Ausbildung",
         )), "Content");
 
-        $fields->addFieldToTab("Root.Main", new DropdownField("ShowStandortFilter", "Filtern der vorhandenen Standorte zeigen" , array(
+        $fields->addFieldToTab("Root.Main", new DropdownField("ShowStandortFilter", "Filtern der vorhandenen Standorte zeigen", array(
             "0" => "Nein",
             "1" => "Ja",
         )), "Content");
@@ -122,12 +118,12 @@ class JobsBaseElement extends \BaseElement
         return $fields;
     }
 
-    
+
     public function forTemplate($holder = true)
     {
         return $this->renderWith("BaseElements/JobsBaseElement");
     }
-    
+
 
     /**
      * Gibt den Namen des BaseElements für die Auswahl im CMS zurück.
@@ -135,5 +131,5 @@ class JobsBaseElement extends \BaseElement
     public function getType(): string
     {
         return "Softgarden Job Übersicht";
-    }    
+    }
 }

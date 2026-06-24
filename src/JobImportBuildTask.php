@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace brandcom\Softgarden;
 
-use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\PolyExecution\PolyOutput;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 
 /**
  * Ist dafür zuständig die Stellenanzeigen aus der API zu ziehen und in der
@@ -14,20 +16,20 @@ use SilverStripe\Dev\BuildTask;
 
 class JobImportBuildTask extends BuildTask
 {
-    /**
-     * Main-Method, die ausgeführt wird, wenn man den Task startet.
-     *
-     * @param HTTPRequest $request
-     * @return void
-     */
-    public function run($request)
+    protected static string $commandName = 'softgarden-import';
+
+    protected string $title = 'Softgarden: Import';
+
+    protected static string $description = 'Importiert Stellenanzeigen aus der Softgarden-API in die Silverstripe-Datenbank (manuell über CMS-Button).';
+
+    protected function execute(InputInterface $input, PolyOutput $output): int
     {
         $client = new SoftgardenClient();
         $jobs = $client->getAllJobs();
         $newJobDataObject = new JobDataObject();
         $newJobDataObject->saveJobs($jobs);
-        echo "
-        <div style='font-family: sans-serif; 
+
+        $output->writeln("<div style='font-family: sans-serif; 
                 background-color:lightgreen; 
                 padding: 100px 30px; 
                 width: 100%; 
@@ -42,9 +44,9 @@ class JobImportBuildTask extends BuildTask
             <p id='lbl_back' style='font-size: 2vw; background: gray; padding: 20px; width: fit-content; color: white; border-radius: 8px;'>
                 Die vorherige Seite wird in 7 Sekunden automatisch geladen.
             </p>
-        </div>";
-        
-        echo "<script>
+        </div>");
+
+        $output->writeln("<script>
             const lbl_back = document.getElementById('lbl_back');
             let time = 7;
             setTimeout(() => {
@@ -54,6 +56,8 @@ class JobImportBuildTask extends BuildTask
                 time --;
                 lbl_back.innerHTML = 'Die vorherige Seite wird in ' + time + ' Sekunden automatisch geladen.';
             }, 1000);
-        </script>";
+        </script>");
+
+        return Command::SUCCESS;
     }
 }
