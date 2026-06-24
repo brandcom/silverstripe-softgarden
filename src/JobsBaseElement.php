@@ -119,9 +119,9 @@ class JobsBaseElement extends \BaseElement
     }
 
 
-    public function forTemplate($holder = true)
+    public function forTemplate($holder = true): string
     {
-        return $this->renderWith("BaseElements/JobsBaseElement");
+        return (string) $this->renderWith("BaseElements/JobsBaseElement");
     }
 
 
