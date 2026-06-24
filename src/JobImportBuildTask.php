@@ -26,37 +26,9 @@ class JobImportBuildTask extends BuildTask
     {
         $client = new SoftgardenClient();
         $jobs = $client->getAllJobs();
-        $newJobDataObject = new JobDataObject();
-        $newJobDataObject->saveJobs($jobs);
+        (new JobDataObject())->saveJobs($jobs);
 
-        $output->writeln("<div style='font-family: sans-serif; 
-                background-color:lightgreen; 
-                padding: 100px 30px; 
-                width: 100%; 
-                height: 100vh;
-                font-size: 3.5vw; 
-                border-radius: 15px; 
-                box-shadow: 0 0 30px black; 
-                position: fixed; 
-                top: -40px; 
-                left: 0px;'>
-            <h2>Der Import war erfolgreich</h2>
-            <p id='lbl_back' style='font-size: 2vw; background: gray; padding: 20px; width: fit-content; color: white; border-radius: 8px;'>
-                Die vorherige Seite wird in 7 Sekunden automatisch geladen.
-            </p>
-        </div>");
-
-        $output->writeln("<script>
-            const lbl_back = document.getElementById('lbl_back');
-            let time = 7;
-            setTimeout(() => {
-                window.location = '/admin/jobs';
-            }, 7000);
-            setInterval(() => {
-                time --;
-                lbl_back.innerHTML = 'Die vorherige Seite wird in ' + time + ' Sekunden automatisch geladen.';
-            }, 1000);
-        </script>");
+        $output->writeln(count($jobs) . ' Jobs erfolgreich importiert.');
 
         return Command::SUCCESS;
     }
