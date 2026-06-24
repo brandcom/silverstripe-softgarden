@@ -24,6 +24,17 @@ class JobModelAdmin extends ModelAdmin
     private static $managed_models = [JobDataObject::class];
     private static $menu_icon_class = 'font-icon-sync';
 
+    private static $allowed_actions = ['importjobs'];
+
+    public function importjobs($request)
+    {
+        $client = new SoftgardenClient();
+        $jobs = $client->getAllJobs();
+        (new JobDataObject())->saveJobs($jobs);
+
+        return $this->redirect($this->Link());
+    }
+
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
@@ -58,7 +69,7 @@ class CustomGridFieldButton implements GridField_HTMLProvider, GridField_ActionP
 {
     public function getHTMLFragments($gridField)
     {
-        $link = Controller::join_links('/dev/tasks/softgarden-import');
+        $link = Controller::join_links('/admin/jobs/importjobs');
         $button = '<a href="' . $link . '" class="ss-ui-button" style="background-color: blue; padding: 10px 15px; color: white; border-radius: 8px; letter-spacing: 2px;">Stellenanzeigen IMPORTIEREN</a>';
 
         return [
