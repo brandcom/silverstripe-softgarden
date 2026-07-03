@@ -139,3 +139,7 @@ SOFTGARDEN_API_CHANNEL_ID2='ID2'
 ## NEU in dev-ss5
 
 Es können nun mehrere Keywords bei den Benefits übergeben werden.
+
+## ss6-upgrade
+
+Der `dev-ss6`-Branch befindet sich derzeit in aktiver Entwicklung und richtet sich an Projekte auf Basis von Silverstripe 6. Funktionsumfang und API können sich noch ändern.
