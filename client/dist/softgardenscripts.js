@@ -117,6 +117,42 @@ setTimeout(() => {
         //removeLastUlElement(softgardenJobConten2t);
     }
 
+    //* Location filter – runs on overview page (outside if(jobinfos))
+    const locationDropdown = document.querySelector(
+        ".bc-softgarden__job-base-element-dropdown-locations",
+    );
+    if (locationDropdown) {
+        const filterTriggers = document.querySelectorAll(
+            ".bc-softgarden__job-base-element-dropdown-locations",
+        );
+        filterTriggers.forEach((filterTrigger) => {
+            filterTrigger.addEventListener("change", () => {
+                const jobElements = document.querySelectorAll(
+                    ".bc-softgarden__job-base-element-overlay-job",
+                );
+                jobElements.forEach((jobElement) => {
+                    if (filterTrigger.value === "empty") {
+                        jobElement.style.display = "flex";
+                    } else {
+                        const CityData =
+                            jobElement.getAttribute("data-location");
+                        if (CityData === filterTrigger.value) {
+                            jobElement.style.display = "flex";
+                        } else {
+                            jobElement.style.display = "none";
+                        }
+                    }
+                });
+                const all_location_filter = document.querySelectorAll(
+                    ".bc-softgarden__job-base-element-dropdown-locations",
+                );
+                all_location_filter.forEach((location_filter) => {
+                    location_filter.value = filterTrigger.value;
+                });
+            });
+        });
+    }
+
     //* Func to check if benefit exists -- reusable helper func
     function doesObjectExist(array, propertyName, value) {
         // Normalize target (current benefit) once
