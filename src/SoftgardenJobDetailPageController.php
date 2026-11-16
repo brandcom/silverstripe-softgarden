@@ -67,8 +67,8 @@ class SoftgardenJobDetailPageController extends \PageController
      */
     public function getMetaDescription(): string
     {
-        $metaDesc = $this->getTitle() . ' ' . $this->job->geo_city;
-        return $metaDesc ?? '';
+        // Ohne Job (z. B. Aufruf von /jobdetails ohne ID) ist $this->job null
+        return trim($this->getTitle() . ' ' . ($this->job->geo_city ?? ''));
     }
 
     /**
