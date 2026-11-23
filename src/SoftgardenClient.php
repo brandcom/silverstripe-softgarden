@@ -63,8 +63,6 @@ class SoftgardenClient
     
             $result = curl_exec($ch);
             $jobs = json_decode($result, true);
-    
-            curl_close($ch);
 
             if (is_array($jobs) && array_key_exists('results', $jobs)) {   
                 foreach ($jobs['results'] as $key => $job) {
